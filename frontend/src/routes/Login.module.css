@@ -1,0 +1,75 @@
+.main{
+    width: 30%;
+    margin: 0 auto;
+    height: 50%;
+    background: grey;
+    margin-top: 5%;
+}
+
+.heading{
+    color: white;
+    align-items: center;
+    padding: 30px 3%;
+    /* display: flex; */
+    
+    font-family: 'Poppins', sans-serif;
+    justify-content: center;
+}
+
+
+.form,
+.content {
+  
+  font-family: 'Poppins', sans-serif;
+}
+
+.formgroup {
+    margin-bottom: 10px;
+  }
+  
+  .formgroup input,
+  .formgroup textarea,
+  .formgroup select {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-family: inherit;
+  }
+
+  .formgroup label {
+    text-align: left;
+    display: block;
+    margin: 0 0 5px 3px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background: #fff;
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    appearance: button;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btn svg {
+    margin-right: 8px;
+  }
+  
+  .btn-reverse {
+    background: #fff;
+    color: #000;
+  }
+  
+  .btn-block {
+    width: 100%;
+    margin-bottom: 20px;
+  }

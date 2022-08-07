@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+  
+  *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+} 
+
+body { 
+  /* min-width: 1280px; */
+  min-height: 100vh;
+  background-color: black;
+}
+
+.container{
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    width: 100vw;
+    
+    
+}
+.title{
+  display: flex;
+  flex-direction: row;
+  
+  align-items: baseline;
+  color: white;
+    font-family: "poppins";
+  font-size: 1.7rem;
+  border-bottom: 3px solid rgb(230, 175, 73);
+  padding-bottom: 7px;
+}
+
+.title p{
+  margin: 0 10px;
+  color: rgb(230, 175, 73)
+}
+
+.contents{
+    background-color: black;
+    width: 1280px;
+    
+    display: flex;
+    flex-direction: row;
+    color: white;
+    font-family: "poppins";
+    justify-content: center;
+flex-wrap: wrap;
+
+}
+
+.info2 {
+  padding: 25px 0px
+}
+
+
+
+.button1{
+background-color: black;
+color: white;
+border: 2px solid white;
+padding: 5px 15px;
+margin: 10px 10px;
+font-family: "poppins";
+border-radius: 15px;
+cursor: pointer;
+transition-duration: 0.5s;
+}
+
+.showdesc{
+background-color: rgb(163, 122, 45);
+font-family: "poppins";
+border-radius: 10px;
+color: white;
+padding: 0 5px
+}
+.showdesc:hover{
+  background-color: rgb(255, 166, 0);
+}
+
+.back{
+  background-color: rgb(114, 114, 114);
+  color: rgb(207, 43, 43);
+  border: none;
+  padding: 10px 25px;
+  margin: 10px 10px;
+  font-family: "poppins";
+  border-radius: 10px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  }
+  .back:hover{
+    background-color: rgb(80, 80, 80);
+  }
+
+.play{
+  background-color: black;
+  color: white;
+  border: 4px solid white;
+  padding: 5px 15px;
+  margin: 10px 10px;
+  font-family: "poppins";
+  border-radius: 15px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  }
+  .play:hover{
+    background-color: rgb(230, 175, 73);
+  }
+
+  .play2{
+    font-size: 3.5rem;
+  }
+  .play3{
+    margin: 0 10px;
+  }
+
+.button1:hover{
+  background-color: white;
+color: black;
+}
+
+
+.container img{
+  width: 400px;
+ 
+}
+.info{
+    padding: 0 30px;
+    width: calc(100% - 400px);
+}
+
+.minimodal{
+  z-index: 999;
+}
+
+.modalopen {
+  display: block;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background: rgb(255, 0, 0);
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modalclose{
+  display: none;
+  z-index:-999;
+}
+
+.modalcontent {
+  margin: 10% auto;
+  width: 50%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  background: transparent;
+  position: relative;
+}
+
+.framecontainer{
+  overflow: hidden;
+  /* 16:9 aspect ratio */
+  padding-top: 56.25%;
+  position: relative;
+}
+
+.cancel2 {
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+  right: 0px;
+  
+}
+
+.infoContainer {
+  display: flex;
+  justify-content: space-around;
+  
+  border-top: 3px solid rgb(230, 175, 73);
+  border-bottom: 3px solid rgb(230, 175, 73);
+  padding: 25px;
+  flex-wrap: wrap;
+}
+
+.infoContainer p{
+  font-size: 1rem;
+  padding: 0 0;
+  width: 25%;
+  justify-content: center;
+}
+
+
+.infoContainer h2{
+  color: rgb(230, 175, 73)
+}
+
+.actor{
+  display: flex;
+  align-items: center;
+  
+}
+
+.actor a:hover{
+color: rgb(230, 175, 73)
+}
+
+.actorimg img{
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  margin: 0px 10px;
+}
+
+.castgenre{
+  display: flex;
+  padding: 25px;
+  border-bottom: 3px solid rgb(230, 175, 73);
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.cast{
+  flex:1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+.cast h3{
+  display: flex;
+  justify-content: center;
+}
+
+.genre{
+  flex:1;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  }
+
+.genre h3{
+  display: flex;
+  justify-content: center;
+}
+
+.genrebtn{
+  display: flex;
+  justify-content: center;
+
+}
+
+.imgSection{
+  width: 400px;
+  /* display: flex; */
+  
+}
+.imgButtons{
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 20px);
+}
+
+@media (max-width: 420px){
+  /* .contents{
+    flex-direction: column;
+    width: 100%;
+  }
+  .body{
+    min-width: 100%;
+  }
+
+  .imgSection{
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .imgSection img{
+    width: 100%;
+    
+  }
+
+  .imgButtons{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .play{
+    font-size: 3rem;
+  }
+  .info{
+    font-size: 2rem;
+  }
+  .title{
+    font-size: 3.5rem;
+  }
+  .infoContainer  h2{
+    font-size: 3rem;
+  }
+  .infoContainer p{
+    font-size: 2.5rem;
+  }
+  .button1{
+    font-size: 2.5rem;
+  } */
+  .contents{
+    width: 100%;
+  }
+ .imgSection{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+
+ }
+ .imgSection img{
+  width: 90%;
+  margin: 0 auto;
+ }
+ .info{
+  width: 100%;
+ }
+ .cast, .genre{
+  width: 100%;
+ }
+ .infoContainer p{
+  
+  width: 50%;
+  
+}
+}

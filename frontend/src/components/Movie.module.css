@@ -1,0 +1,259 @@
+/* 
+  /* start*/
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+  
+  *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+} 
+
+  .container {
+    width: 230px;
+    background: #2c2c2c;
+    /* height: 480px; */
+    color: white;
+    margin: 10px 10px;
+    border-radius: 10px;
+    z-index: 10;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: 0.5s all ease-in-out;
+  }
+
+  .container:hover {
+    background: #504f4f;
+    transition: 0.5s;
+  }
+
+  
+  a {
+    color: white;
+  }
+  .box {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    box-shadow: 10px 10px;
+    
+
+  }
+  
+
+  .realimg{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    z-index: 1;
+    transition: 0.5s all ease-in-out;
+  }
+
+  .realimg:hover{
+    transform: scale(1.02);
+    transition: 0.5s ;
+    filter: brightness(120%);
+  }
+
+  .fakeimg{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    z-index: 0;
+   width: 230px;
+   height: 345px;
+  }
+  .box .content{
+    margin: 5px 10px;
+  }
+
+  .list{
+    list-style: none;
+    
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1;
+    margin: 2px 0px;
+    color: orange;
+  }
+
+  .list li{
+    margin: 0 10px;
+  }
+
+ 
+  .overlay{
+    position: relative;
+    width: 230px;
+    height: 345px;
+    
+    
+  }
+  
+  .photo{
+    position: relative;
+    width: 230px;
+    height: 345px;
+    overflow: hidden;
+    
+  }
+
+  .hour{
+    position: absolute;
+    bottom: 5px;
+    right: 2px;
+    padding: 1px 5px;
+    background-color: black;
+    margin: 1px 1px;
+    z-index: 2;
+  }
+
+  .customlisticon{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+   
+    z-index: 2;
+  }
+
+  .rating{
+    position: absolute;
+    bottom: 5px;
+    left: 2px;
+    padding: 1px 5px;
+    background-color: black;
+    margin: 1px 1px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+
+  }
+
+  .content ul{
+    height: 1.6rem;
+  }
+
+  .icon{
+    font-size: 1rem;
+    color: orange;
+    bottom: 0px
+  }
+
+  .button1{
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    padding: 1px 15px;
+    margin: 1px 10px;
+    font-family: "poppins";
+    border-radius: 10px;
+    cursor: pointer;
+    transition-duration: 0.5s;
+    display: flex;
+    justify-content: center;
+    }
+    
+    .button1:hover{
+      background-color: white;
+    color: black;
+    }
+
+    .listbtn {
+    display: flex;
+    justify-content: center;
+    }
+
+    .genrecentre{
+      display: flex;
+    justify-content: center;
+    }
+
+   
+    .content h2{
+      
+    
+    text-align: center;
+    margin-top: 5px;
+    font-size: 1rem;
+    height: 2rem;
+    /* overflow handling */
+    overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+  width: 200px;
+    }
+
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      border-bottom: 1px dotted black;
+    }
+    
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+      bottom: 150%;
+      left: 50%;
+      margin-left: -60px;
+    }
+    
+    .tooltip .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: black transparent transparent transparent;
+    }
+    
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+    }
+
+    /* @media (max-width: 420px){
+      .container{
+        width: 150vw;
+        height: calc(150vw*2);
+      
+         
+      }
+      .box{
+        font-size: 2.5rem;
+        width: 100%;
+        height: 100%;
+      }
+      .overlay{
+        width: 100%;
+        height: 75%;
+        
+      }
+      .rating svg{
+        font-size: 3rem;
+      }
+      .content{
+        height: 25%;
+      }
+      .genrecentre h2{
+        text-align: center;
+        margin-top: 1rem;
+        font-size: 3rem;
+        height: 6rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 95%;
+      }
+
+      .genrecentre ul{
+        height: 5rem;
+      }
+    } */

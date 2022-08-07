@@ -1,0 +1,30 @@
+.contents{
+  max-width: 1280px;
+  display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+.link a {
+  color: hotpink;
+}
+
+.avatar {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+input[type="submit"] {
+  display: none;
+}
+
+.file {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}

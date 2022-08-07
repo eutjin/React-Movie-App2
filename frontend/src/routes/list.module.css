@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+.header{
+background: black;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.grid {
+    /* display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); */
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    flex-wrap: wrap;
+    width: 100%;
+
+    
+}
+
+
+a { text-decoration: none; }
+
+.contents{
+    max-width: 1280px;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carouselContainer{
+    position: relative;
+    max-width: 1280px;
+}
+
+.rightButton{
+    position: absolute;
+    right: 1px;
+    font-size: 30px;
+}

@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+.modalBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modalContainer {
+    width: 30%;
+    height: 200px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+
+  }
+  
+  .modalContainer .title {
+    display: inline-block;
+    text-align: center;
+    margin: 20px 0;
+    min-width: 80%;
+  }
+  
+
+  .body{
+     
+
+      
+      padding: 0 10px;
+  }
+
+  .body form{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+     display: flex;
+      justify-content: center;
+  }
+  
+  .form{
+      height: 2.5rem;
+      width: 80%;
+      font-size: 1.1rem;
+      box-sizing: border-box;
+  }
+
+  .copybtn{
+    height: 2.5rem;
+    color: white;
+    background-color: black;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+    /* line-height: 1rem; */
+    font-size: 1;
+    font-family: 'Poppins', sans-serif;
+
+  }
+
+  .closebtn {
+      position: absolute;
+      top: 5px;
+      right: 9px;
+      
+  }
+
+  .closebtn button{
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+  }
