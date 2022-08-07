@@ -124,7 +124,7 @@ custom list(CL): create CL, delete CL, add item to CL, delete item from CL
 30. TODO: alert notification aftter add list, delete comemment etc
 31. TODO: custom list movies not fully deleted in the array of the custom title
 32. no profile made>comment on moview>error
-
+33. user login behavour
 
 bugs:
 1. when movie "abc" is added to list, then go to movie "abc" movie detail, then click genre, itgoes to page having that movie, but •
