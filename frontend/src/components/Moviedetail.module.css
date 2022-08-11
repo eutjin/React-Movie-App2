@@ -25,6 +25,7 @@ body {
 .title{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   
   align-items: baseline;
   color: white;
@@ -330,6 +331,7 @@ color: rgb(230, 175, 73)
  }
  .info{
   width: 100%;
+  padding: 0 15px;
  }
  .cast, .genre{
   width: 100%;

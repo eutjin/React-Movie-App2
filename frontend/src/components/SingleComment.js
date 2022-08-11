@@ -3,7 +3,7 @@ import {Link, useLocation} from "react-router-dom";
 import moment from 'moment';
 
 import {
-  Card, Image, Menu,
+  Card, Image, Menu, 
   createStyles,
   Text,
   Avatar,
@@ -51,8 +51,8 @@ function SingleComment({
 
   const useStyles = createStyles((theme) => ({
     container: {
-      padding: `${theme.spacing.lg}px ${theme.spacing.xl}px`,
-      margin: "10px",
+      padding: "5px",
+      margin: "10px 0",
       backgroundColor: "black",
       border: "2px solid white",
       color: "white",
@@ -61,27 +61,52 @@ function SingleComment({
         border: "2px solid orange",
       },
 
-      // [`@media (max-width: 420px)`]: {
-      //   fontSize: '2.5rem',
+      [`@media (max-width: 420px)`]: {
+        margin: "10px 0",
         
-      // },
+      },
     },
-
+    // menuBorder:{
+    //   border: "solid white",
+    // },
+voteSection:{
+display: "flex",
+},
     user:{
       color:"white",
+      display: "flex",
+      flexDirection: "column",
       '&:hover':{
         color: "orange",
       },
     },
 content:{
   whiteSpace: "pre-wrap",
+  // margin: "0 5px",
 
-  // [`@media (max-width: 420px)`]: {
-  //   fontSize: '2.5rem',
-  //   height: '3.5rem',
-  //   width: '3.5rem',
+  [`@media (max-width: 420px)`]: {
+    fontSize: '1rem',
+   
+  },
+},
+voteValue:{
+  margin: "0 10px",
+   [`@media (max-width: 420px)`]: {
+    fontSize: '12px',
+   
+  },
+},
+voteButton:{
+  [`@media (max-width: 420px)`]: {
+    fontSize: '12px',
+    // width: "0.5rem",
+    height: "20px",
+    minHeight: "20px",
+    width: "20px",
+    minWidth: "20px",
     
-  // },
+   
+  },
 },
     
     left:{
@@ -370,7 +395,7 @@ const profileCard = (
   <>
     <div>
       {comment.writer.profile.avatar ? (
-        <Avatar size={120} radius={100} mx="auto" color="indigo">
+        <Avatar size={120} radius={100} my="auto" color="indigo">
           {" "}
           <Image height={120} src={comment.writer.profile.avatar} />
         </Avatar>
@@ -382,18 +407,20 @@ const profileCard = (
       </Text>
     </div>
 
+<div className={classes.menuBorder}></div>
+
     <Group mt="md" position="center" spacing={30}>
       <div>
         <Text align="center" size="lg" weight={500}>
-          10
+          {comment.writer.profile.followers.length}
         </Text>
         <Text align="center" size="sm" color="dimmed">
-          Following
+          Followers
         </Text>
       </div>
       <div>
         <Text align="center" size="lg" weight={500}>
-          10
+        {comment.writer.profile.following.length}
         </Text>
         <Text align="center" size="sm" color="dimmed">
           Following
@@ -414,34 +441,34 @@ const profileCard = (
     <>
       {console.log("singlecomment", comment)}
 
-      <Card radius="md" className={classes.container} id={comment._id}>
+      <Card p="xs" radius="md" className={classes.container} id={comment._id}>
         <Group>
           {/* UPVOTE DOWNVOTE */}
           <Card.Section className={classes.containerLeft}>
-            <Group my={10}>
+            <div className={classes.voteSection}>
               <ActionIcon
-                color="orange"
+                color="yellow"
                 variant={upAction ? "filled" : "outline"}
-                onClick={() => onUp(comment)} className={classes.content}
+                onClick={() => onUp(comment)} className={classes.voteButton}
               >
                 <AiOutlineUp/>
               </ActionIcon>
-              <Text className={classes.content}>{upvotes}</Text>
-            </Group>
+              <Text className={classes.voteValue}>{upvotes}</Text>
+              </div>
 
-            <Group my={10}>
+              <div className={classes.voteSection}>
               <ActionIcon
-                color="orange"
+                color="yellow"
                 variant={downAction ? "filled" : "outline"}
-                onClick={() => onDown(comment)} className={classes.content}
+                onClick={() => onDown(comment)} className={classes.voteButton}
               >
                 <AiOutlineDown/>
               </ActionIcon>
-              <Text className={classes.content}>{downvotes}</Text>
-            </Group>
+              <Text className={classes.voteValue}>{downvotes}</Text>
+            </div>
           </Card.Section>
           <div className={classes.containerRight}>
-            <Group position="apart" ml={20} >
+            <Group position="apart"  >
               <Group >
               <Menu withArrow
                 position="bottom"
@@ -452,10 +479,10 @@ const profileCard = (
                   // <Group>
                     <div >
                       {comment.writer.profile.avatar ? (
-                        <Avatar size={60} radius={100} color="indigo">
+                        <Avatar size={40} radius={100} color="indigo">
                           {" "}
                           <Image
-                            height={60}
+                            height={40}
                             src={comment.writer.profile.avatar}
                           />
                         </Avatar>
@@ -512,7 +539,7 @@ const profileCard = (
                       <Link to={`/profile/${comment.writer._id}`}>
                         {comment.writer.name}
                       </Link>
-<div>
+
                       <Menu size="xs" withArrow
                 position="right"
                 placement="center"
@@ -525,7 +552,7 @@ const profileCard = (
                       <Text size="xs" color="dimmed">
                         {moment(comment.createdAt).format('MMMM DD, YYYY [at] h:mm a')}
                       </Text>
-                      </Menu></div>
+                      </Menu>
                     </div>
 </Group>
               {/* <Group>
@@ -573,7 +600,7 @@ const profileCard = (
               </div>
             </Group>
 
-            <Group mt={20} ml={20} >
+            <Group mt={20}  >
               <Text weight={700} size="lg" className={classes.content}>
                 {comment.title}
               </Text>
@@ -649,7 +676,7 @@ const profileCard = (
                 </form>
               </Modal>
             ) : (
-              <Text ml={20} size="md" className={classes.commentBody}>
+              <Text  size="sm" className={classes.commentBody}>
                 {comment.content}
               </Text>
             )}

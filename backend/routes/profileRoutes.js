@@ -38,9 +38,10 @@ router.post("/saveProfile", (req, res) => {
 });
 
 router.post("/updateProfile", (req, res)=>{
-  console.log("profZ", req.body);
+  console.log("profZ", req.body.user);
 
-  Profile.updateOne({user: req.body.user._id}, {name: req.body.name, about: req.body.about, gender: req.body.gender}, { new: true }).exec((err, result)=>{
+  //edited 2022/08/09 .user from .user._id
+  Profile.updateOne({user: req.body.user}, {name: req.body.name, about: req.body.about, gender: req.body.gender}, { new: true }).exec((err, result)=>{
     if (err) return res.json({ success: false, err });
             
             return res.status(200).json({ success: true, result });

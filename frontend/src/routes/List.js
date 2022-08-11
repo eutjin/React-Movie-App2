@@ -101,18 +101,19 @@ const List=()=>{
       },
       desktop: {
         breakpoint: { max: 3000, min: 1024 },
-        items: 5.2,
+        items: 5,
         partialVisibilityGutter: 20
 
       },
       tablet: {
         breakpoint: { max: 1024, min: 464 },
-        items: 2
+        items: 2,
+        // partialVisibilityGutter: 20
       },
       mobile: {
         breakpoint: { max: 420, min: 1 },
-        items: 2,
-        partialVisibilityGutter: 200,
+        items: 1,
+        // partialVisibilityGutter: 20,
       }
     };
 
@@ -124,7 +125,7 @@ const List=()=>{
       <section className={styles.contents}>
         <Card my="md" p="xs" className={classes.card}>
           <Group>
-            <div className={classes.content}>
+            <div className={styles.listTitleGroup}>
             <Title order={2} weight={100}color="#FFAE42">Watchlist</Title>
               
               <Text size="xs" color="white">
@@ -177,7 +178,7 @@ const List=()=>{
           <Title order={2}>{title.listTitle}</Title>
           <Text size="xs" color="white">{(list.filter(list=>list.list._id==title._id)).length} movies in "{title.listTitle} list</Text>
           </div>
-          <Button onClick={()=>handleDeleteBtn(title._id)}>delete</Button>
+          <Button onClick={()=>handleDeleteBtn(title._id)} className={styles.deleteButton}>Delete List</Button>
           {/* <Button onClick={()=>handleDelCustomList(title._id)}>delete</Button> */}
           </Group>
           <div className={styles.grid}>

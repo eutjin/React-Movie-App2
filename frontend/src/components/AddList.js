@@ -6,7 +6,7 @@ import {BsPlusLg,BsBookmarkPlus as Bs, BsFillBookmarkPlusFill, BiBookmarkPlus} f
 
 import { useGlobalContext } from '../context'
 import { useState, useEffect } from "react";
-import { createStyles, Text, ThemeIcon, Avatar, Group, TypographyStylesProvider, Paper, Button, Textarea, Menu, MenuItem, ActionIcon, } from '@mantine/core';
+import { createStyles, Divider, Text, ThemeIcon, Avatar, Group, TypographyStylesProvider, Paper, Button, Textarea, Menu, MenuItem, ActionIcon, } from '@mantine/core';
 import CreateCustomList from "./CreateCustomList";
 
 import axios from 'axios'
@@ -28,12 +28,26 @@ function AddList({movieId, variable, }) {
     // }
 
     const useStyles= createStyles((theme)=>({
-    //   sort:{
+      list:{
         
-    //     backgroundColor: theme.colors.gray[3],
-    //     marginTop: "5px",
+        // backgroundColor: theme.colors.gray[3],
+        // marginTop: "5px",
+     display: "flex",
      
-    // },
+     width: "100%",
+     justifyContent: "space-between",
+     alignItems: "center",
+    },
+    listTitle:{
+      width: "50%",
+    },
+    listAdded:{
+      
+      margin: "0 60px",
+      fontSize: "1.2rem",
+      padding: 0,
+      color: theme.colors.orange[3],
+          },
     button:{
       color: "white",
       // boxShadow: 3,
@@ -43,6 +57,11 @@ function AddList({movieId, variable, }) {
       '&:hover':{
         color:"green",
       },
+    },
+    menuBody:{
+      backgroundColor: "#2c2c2c",
+      border: "none",
+      width: "80%",
     }
   }))
 
@@ -128,7 +147,7 @@ function AddList({movieId, variable, }) {
 
   return (
     <div>
-      <Menu trigger="hover" position="right"
+      <Menu trigger="hover" position="right" classNames={{body: classes.menuBody,}}
         control={
           <ActionIcon variant="filled" className={classes.button} radius="xl" size="sm"  >
           
@@ -137,21 +156,26 @@ function AddList({movieId, variable, }) {
         }
       >
         <Menu.Label>Custom lists</Menu.Label>
+        <Divider/>
 
         {/* <Menu.Item><CreateCustomList/></Menu.Item> */}
         {listTitles.map((list1) => (
           <Menu.Item
-            className={classes.sort}
+           
             onClick={() => handleAddtoList(list1._id)}
+
           >
+            <div className={classes.list}>
+            <div className={classes.listTitle}>
             {list1.listTitle}
-            <p>
+            </div>
+            <div className={classes.listAdded}>
               {list
                 .filter((list) => list.list._id == list1._id)
                 .some((list) => list.id == movieId)
-                ? "added"
-                : "maybe"}
-            </p>
+                ? <AiOutlineCheck/>
+                : null}
+            </div></div>
           </Menu.Item>
         ))}
       </Menu>

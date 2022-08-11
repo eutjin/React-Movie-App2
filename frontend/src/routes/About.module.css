@@ -12,6 +12,12 @@ margin-right: auto;
 .avatar {
   display: flex;
   flex-direction: column;
+  position: relative;
+  width: 150px;
+}
+.avatarGroup{
+  width: 150px;
+  margin: 15px;
 }
 
 input[type="file"] {
@@ -27,4 +33,59 @@ input[type="submit"] {
   display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
+}
+.addAvatar{
+  background-color: hsla(38, 100%, 44%, 1);
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 3%;
+  right: 2%;
+  border: none;
+}
+
+.addAvatar:hover{
+  background-color: hsla(38, 100%, 57%, 1);
+}
+.profileButton{
+  background-color: hsla(0, 0%, 37%, 1);
+  margin: 10px 0;
+}
+.profileButton:hover{
+  background-color: hsla(0, 0%, 43%, 1);
+}
+
+.cardMain{
+  display: flex;
+  padding: 5px;
+
+}
+
+.info{
+  margin: 15px;
+}
+
+@media (max-width: 420px){
+  .cardMain{
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+  }
+
+  /* .avatarGroup{
+    width: 100%;
+  } */
+  /* .avatar{
+    justify-content: center;
+  } */
+  .info{
+    width: 100%;
+    padding: 15px;
+    margin:0;
+  }
+  .tableView{
+    display: none;
+  }
 }

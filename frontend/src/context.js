@@ -37,6 +37,7 @@ const AppProvider = ({ children }) => {
     const [page, setPage]=useState(1)
     const [numPage, setNumPage]= useState()
     const [user, setUser] = useState(getLocalStorageUser())
+    const [userProfile, setUserProfile]=useState({})
     const [listTitles, setListTitles]= useState([])
     const [list, setList]= useState([])
     const [adding, setAdding]= useState(false)
@@ -151,10 +152,41 @@ const AppProvider = ({ children }) => {
   }
 
   useEffect(()=>{
+    getProfile()
 getAllList()
 getCustomList()
 
   }, [])
+
+//load user profile, user must have completed profile first
+  const getProfile = () => {
+    const variables = {
+      id: user._id,
+    };
+    return axios
+      .post("http://localhost:5000/api/profile/getProfile", variables)
+      .then((response) => {
+        if (response.data.success) {
+          console.log("heehaw", response.data.result);
+          // setProfile({
+          //   ...response.data.result[0],
+          //   followers: response.data.result[0].followers,
+          // });
+          if(response.data.result.length>0){
+          let newProfile = response.data.result[0];
+          setUserProfile({ ...newProfile });
+          console.log("doneeeeee")
+
+          
+          }
+        } else {
+          alert("failed to get comments");
+          console.log("failed");
+        }
+      })
+
+     
+  };
 
   //populat user's custom list and custom list conteentts
   useEffect(() => {
@@ -224,7 +256,7 @@ return response.data
         setGenre,
         onChangeGenre,
         onChangeRating,
-        query, setQuery, handleSubmit, handleFavouriteSubmit, setFavourites, favourites, results, page, numPage, setNumPage, nextPage, prevPage, resetTerm, user, setUser, listTitles, list, setList, getCustomList, getAllList
+        query, setQuery, handleSubmit, handleFavouriteSubmit, setFavourites, favourites, results, page, numPage, setNumPage, nextPage, prevPage, resetTerm, user, userProfile, getProfile, setUser, listTitles, list, setList, getCustomList, getAllList
         
       }}
     >

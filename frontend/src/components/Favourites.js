@@ -96,8 +96,8 @@ return (
       <span class={styles.tooltiptext}>
         {user.token
           ? favourites.some((fav) => fav.id == variable.id)
-            ? "remove from list2"
-            : "add to list"
+            ? "remove from Watchlist"
+            : "add to Watchlist"
           : "please login"}
       </span>
       

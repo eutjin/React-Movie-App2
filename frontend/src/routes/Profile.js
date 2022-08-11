@@ -25,7 +25,7 @@ import axios from "axios";
 import CreateCustomList from "../components/CreateCustomList";
 
 const Profile = () => {
-  const { favourites, user, listTitles, list, getAllList, getCustomList } =
+  const { favourites, user, listTitles, list, getAllList, getCustomList, getProfile} =
     useGlobalContext();
   const { id } = useParams();
   const [profile, setProfile] = useState({});
@@ -53,26 +53,30 @@ const Profile = () => {
       },
     },
     followers: {
-      color: "black",
+      // color: "black",
 
       "&:hover": {
         backgroundColor: "#3c3c3c",
         color: "white",
       },
     },
+    menu2:{
+      backgroundColor: "green",
+      color: "green",
+    }
   }));
   const { classes } = useStyles();
 
   useEffect(() => {
-    getProfile();
+    getCurrentProfile();
   }, []);
 
   useEffect(() => {
-    getProfile();
+    getCurrentProfile();
   }, [id]);
 
   //load profile of user
-  const getProfile = () => {
+  const getCurrentProfile = () => {
     const variables = {
       id: id,
     };
@@ -110,6 +114,7 @@ const Profile = () => {
           console.log("failed");
         }
       });
+    await getCurrentProfile();
     await getProfile();
   };
 
@@ -219,7 +224,7 @@ const Profile = () => {
               </Text>
 
               <Group spacing="xl" pt="md">
-                <Menu
+                <Menu 
                   variant="unstyled"
                   trigger="hover"
                   control={
@@ -239,8 +244,8 @@ const Profile = () => {
                           className={classes.link}
                           to={`/profile/${item._id}`}
                         >
-                          <Menu.Item
-                            className={classes.followers}
+                          <Menu.Item 
+                            className={classes.menu2}
                             variant="unstyled"
                             p={5}
                           >
