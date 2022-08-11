@@ -10,7 +10,7 @@ import axios from 'axios'
 import Favourites from "./Favourites";
 import AddList from "./AddList";
 import { ActionIcon } from "@mantine/core";
-
+import baseUrl from "../BaseUrl";
 
 function Movie({id, imgSrc, imgSrc2,title, rating, summary, genres, movie, setGenre, runtime}){
 
@@ -75,7 +75,7 @@ const createList =async(listData)=>{
       }   
   }
   console.log(config)
-const response= await axios.post("http://localhost:5000/api/goals", listData, config)
+const response= await axios.post(baseUrl+"/api/goals", listData, config)
 // console.log(response.data);
 setFavourites(response.data)
 return response.data
@@ -94,7 +94,7 @@ const deleteList =async(movieId)=>{
       }   
   }
   console.log(config)
-const response= await axios.delete("http://localhost:5000/api/goals/" + listId, config)
+const response= await axios.delete(baseUrl+"/api/goals/" + listId, config)
 // console.log(response.data);
 setFavourites(response.data)
 return response.data

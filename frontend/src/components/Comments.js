@@ -5,7 +5,7 @@ import { useGlobalContext } from '../context'
 import styles from './Comments.module.css'
 import SingleComment from './SingleComment'
 import { Tooltip, createStyles, Text, Avatar, Group, TypographyStylesProvider, Paper, Textarea, TextInput,Button, Select, Modal, Card} from '@mantine/core';
-
+import baseUrl from "../BaseUrl";
 
 
 function Comments({movieId, updateComment, commentList, updateAfterDelete, getAllComments, title}) {
@@ -80,7 +80,7 @@ useEffect(()=> {
 
         }
         console.log(variables)
-        axios.post('http://localhost:5000/api/comment/saveComment', variables).then(response=>{
+        axios.post(baseUrl+'/api/comment/saveComment', variables).then(response=>{
             if(response.data.success){
                 setComment('')
                 setCommentTitle('')

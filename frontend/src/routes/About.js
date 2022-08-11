@@ -38,6 +38,8 @@ import {
 } from "react-icons/bs";
 
 import moment from "moment";
+import baseUrl from "../BaseUrl";
+
 
 import Styles from "./About.module.css";
 
@@ -107,7 +109,7 @@ const About = () => {
     const variable = userFormProfile;
     console.log("variable", variable);
     axios
-      .post("http://localhost:5000/api/profile/saveProfile", variable)
+      .post(baseUrl+"/api/profile/saveProfile", variable)
       .then((response) => {
         if (response.data.success) {
           console.log("profile success");
@@ -126,7 +128,7 @@ const About = () => {
     const variable = userFormProfile;
     console.log("variable", variable);
     axios
-      .post("http://localhost:5000/api/profile/updateProfile", variable)
+      .post(baseUrl+"/api/profile/updateProfile", variable)
       .then((response) => {
         if (response.data.success) {
           console.log("profile update success");
@@ -195,7 +197,7 @@ const About = () => {
     try {
       const response = await axios({
         method: "post",
-        url: "http://localhost:5000/api/profile/upload",
+        url: baseUrl+"/api/profile/upload",
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       });
@@ -219,7 +221,7 @@ const About = () => {
     };
 
     axios
-      .post("http://localhost:5000/api/activity/getAllUserComments", variable)
+      .post(baseUrl+"/api/activity/getAllUserComments", variable)
       .then((response) => {
         console.log(response.data);
         setActivityComments(response.data.result);
@@ -232,7 +234,7 @@ const About = () => {
     };
 
     axios
-      .post("http://localhost:5000/api/activity/getAllActions", variable)
+      .post(baseUrl+"/api/activity/getAllActions", variable)
       .then((response) => {
         console.log(response.data);
         setAllActions(response.data.result);

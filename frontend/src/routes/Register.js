@@ -6,7 +6,7 @@ import { FaSignInAlt } from "react-icons/fa";
 import axios from "axios";
 import { useGlobalContext } from "../context";
 import { Anchor, PasswordInput, Title, Container, createStyles, Text, Avatar, Group, TypographyStylesProvider, Paper, Textarea, TextInput,Button, Select, Modal, Card} from '@mantine/core';
-
+import baseUrl from "../BaseUrl";
 
 const Register = () => {
   const { user, setUser, setFavourites } = useGlobalContext();
@@ -48,7 +48,7 @@ const Register = () => {
   //register new user
   const register = async (userData) => {
     const response = await axios
-      .post("http://localhost:5000/api/users/", userData)
+      .post(baseUrl+"/api/users/", userData)
       .then(function (response) {
         localStorage.setItem("user", JSON.stringify(response.data));
         setUser(response.data);

@@ -20,6 +20,8 @@ import {
 } from "@mantine/core";
 import { useGlobalContext } from "../context";
 import axios from "axios";
+import baseUrl from "../BaseUrl";
+
 import {
   AiFillEdit,
   AiFillDelete,
@@ -213,7 +215,7 @@ voteButton:{
     movieTitle: comment.movieTitle,
     }
 
-    const response= await axios.put("http://localhost:5000/api/comment/deleteComment/" + commentId, data, config);
+    const response= await axios.put(baseUrl+"/api/comment/deleteComment/" + commentId, data, config);
 
     console.log(response.data)
     getAllComments();
@@ -248,7 +250,7 @@ voteButton:{
     };
 
     const response = await axios.put(
-      "http://localhost:5000/api/comment/editComment/" + commentId,
+      baseUrl+"/api/comment/editComment/" + commentId,
       data,
       config
     );
@@ -267,7 +269,7 @@ useEffect(()=>{
 
   }
   //get all upvotes
-  axios.post("http://localhost:5000/api/vote/getUpvotes/", variable).then(response=>{
+  axios.post(baseUrl+"/api/vote/getUpvotes/", variable).then(response=>{
     if(response.data.success){
       console.log("upvotes",response.data.result)
       setUpvotes(response.data.result.length)
@@ -283,7 +285,7 @@ useEffect(()=>{
   })
 
   //get all DOWNVOTES
-  axios.post("http://localhost:5000/api/vote/getDownvotes/", variable).then(response=>{
+  axios.post(baseUrl+"/api/vote/getDownvotes/", variable).then(response=>{
     if(response.data.success){
       console.log(response.data)
       setDownvotes(response.data.result.length)
@@ -314,7 +316,7 @@ const onUp= async(comment)=>{
   //if not upvoted yet
   if (!upAction){
 
-    const response= await axios.post("http://localhost:5000/api/vote/upvote/", variable)
+    const response= await axios.post(baseUrl+"/api/vote/upvote/", variable)
 
       if(response.data.success){
         console.log(response.data)
@@ -333,7 +335,7 @@ const onUp= async(comment)=>{
 
     //if akready upvoted but clicked once more
   else{
-    const response= await axios.post("http://localhost:5000/api/vote/undoUpvote/", variable)
+    const response= await axios.post(baseUrl+"/api/vote/undoUpvote/", variable)
     if(response.data.success){
       setUpAction(false)
       setUpvotes(upvotes-1)
@@ -357,7 +359,7 @@ const onDown= async(comment)=>{
   //if not downvoted yet
   if (!downAction){
 
-    const response= await axios.post("http://localhost:5000/api/vote/downvote/", variable)
+    const response= await axios.post(baseUrl+"/api/vote/downvote/", variable)
 
       if(response.data.success){
         console.log(response.data)
@@ -377,7 +379,7 @@ const onDown= async(comment)=>{
 
     //if akready downvoted but clicked once more
   else{
-    const response= await axios.post("http://localhost:5000/api/vote/undoDownvote/", variable)
+    const response= await axios.post(baseUrl+"/api/vote/undoDownvote/", variable)
     if(response.data.success){
       setDownAction(false)
       setDownvotes(downvotes-1)

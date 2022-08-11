@@ -4,6 +4,8 @@ import Movie from "../components/Movie";
 import { useGlobalContext } from "../context";
 import styles from "./list.module.css";
 import moment from "moment";
+import baseUrl from "../BaseUrl";
+
 
 import {
   Menu,
@@ -81,7 +83,7 @@ const Profile = () => {
       id: id,
     };
     axios
-      .post("http://localhost:5000/api/profile/getProfile", variables)
+      .post(baseUrl+"/api/profile/getProfile", variables)
       .then((response) => {
         if (response.data.success) {
           console.log("heehaw", response.data.result);
@@ -105,7 +107,7 @@ const Profile = () => {
       user: user._id,
     };
     await axios
-      .post("http://localhost:5000/api/profile/followUser", variables)
+      .post(baseUrl+"/api/profile/followUser", variables)
       .then((response) => {
         if (response.data.success) {
           console.log(response.data);
@@ -128,7 +130,7 @@ const Profile = () => {
       user: id,
     };
     axios
-      .post("http://localhost:5000/api/list/getAllList", variable)
+      .post(baseUrl+"/api/list/getAllList", variable)
       .then((response) => {
         console.log(response.data.lists);
         setListTitles2(response.data.lists);
@@ -149,7 +151,7 @@ const Profile = () => {
       },
     };
     axios
-      .post("http://localhost:5000/api/list/getCustomList", variable, config)
+      .post(baseUrl+"/api/list/getCustomList", variable, config)
       .then((response) => {
         if (response.data.success) {
           setList2(response.data.result);
@@ -179,7 +181,7 @@ const Profile = () => {
     };
 
     axios
-      .post("http://localhost:5000/api/list/copyList", variable)
+      .post(baseUrl+"/api/list/copyList", variable)
       .then((response) => {
         if (response.data.success) {
           console.log(response.data);

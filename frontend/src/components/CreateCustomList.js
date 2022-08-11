@@ -6,7 +6,7 @@ import { useGlobalContext } from '../context'
 
 import {Card, Text, Group, Button, Modal, Input, Textarea, Title, createStyles} from "@mantine/core"
 import axios from 'axios';
-
+import baseUrl from "../BaseUrl";
 
 const CreateCustomList=()=>{
     
@@ -57,7 +57,7 @@ const CreateCustomList=()=>{
       user: user._id,
     }
 
-    axios.post('http://localhost:5000/api/list/createList', variables).then(response=>{
+    axios.post(baseUrl+'/api/list/createList', variables).then(response=>{
           if(response.data.success){
               // setComment('')
               console.log(response.data.result)

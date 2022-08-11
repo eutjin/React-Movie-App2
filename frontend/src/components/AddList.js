@@ -8,6 +8,7 @@ import { useGlobalContext } from '../context'
 import { useState, useEffect } from "react";
 import { createStyles, Divider, Text, ThemeIcon, Avatar, Group, TypographyStylesProvider, Paper, Button, Textarea, Menu, MenuItem, ActionIcon, } from '@mantine/core';
 import CreateCustomList from "./CreateCustomList";
+import baseUrl from "../BaseUrl";
 
 import axios from 'axios'
 
@@ -100,7 +101,7 @@ function AddList({movieId, variable, }) {
             Authorization: `Bearer ${token}`
         }   
     }
-    const response= await axios.post("http://localhost:5000/api/list/addToList", variable, config)
+    const response= await axios.post(baseUrl+"/api/list/addToList", variable, config)
     console.log(response.data)
     // setList(response.data.result)
     return response.data
@@ -112,7 +113,7 @@ function AddList({movieId, variable, }) {
       const deleteId= list.filter(list=>list.list._id==listid).find(list=>list.id==movieId)._id
       console.log('deleteId', deleteId)
 
-  const response= await axios.delete("http://localhost:5000/api/list/removeFromList/" + deleteId)
+  const response= await axios.delete(baseUrl+"/api/list/removeFromList/" + deleteId)
   console.log(response.data)
   // setList(response.data.result)
   

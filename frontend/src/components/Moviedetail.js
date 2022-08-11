@@ -10,6 +10,7 @@ import Comments from "./Comments";
 import Modal2 from "./Modal2"
 import axios from "axios";
 import Favourites from "./Favourites";
+import baseUrl from "../BaseUrl";
 
 function Moviedetail({id, imgSrc, imgSrc2, title, genres, movie, rating, runtime, desc, youtube, year, cast, pa, language}){
 
@@ -64,7 +65,7 @@ const getAllComments=()=>{
   const variables={
     postId: id,
 }
-axios.post('http://localhost:5000/api/comment/getComment', variables).then(response=>{
+axios.post(baseUrl+'/api/comment/getComment', variables).then(response=>{
   if(response.data.success){
     setCommentList(response.data.comments)
     console.log(response)

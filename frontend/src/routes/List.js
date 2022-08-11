@@ -12,7 +12,7 @@ import CreateCustomList from "../components/CreateCustomList"
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { AiOutlineLeft, AiOutlineRight, AiOutlineSearch, AiFillRightCircle} from "react-icons/ai";
-
+import baseUrl from "../BaseUrl";
 
 const List=()=>{
     
@@ -70,7 +70,7 @@ const List=()=>{
 
     const handleDelCustomList=async()=>{
       
-      const response=  await axios.delete("http://localhost:5000/api/list/deleteList/"+titleId)
+      const response=  await axios.delete(baseUrl+"/api/list/deleteList/"+titleId)
       console.log(response.data)
       
       await getAllList()

@@ -7,7 +7,7 @@ import axios from 'axios'
 import { useGlobalContext } from '../context';
 import styles from './Login.module.css';
 import { Anchor, PasswordInput, Title, Container, createStyles, Text, Avatar, Group, TypographyStylesProvider, Paper, Textarea, TextInput,Button, Select, Modal, Card} from '@mantine/core';
-
+import baseUrl from "../BaseUrl";
 
 const API_URL= '/api/users/' //with proxy in package.json
 
@@ -79,7 +79,7 @@ const Login=()=>{
 
         //user login//must populate favourites in beginnig
         const login= async (userData)=>{
-        const response = await axios.post("http://localhost:5000/api/users/login", userData).then(function(response){
+        const response = await axios.post(baseUrl+"/api/users/login", userData).then(function(response){
           localStorage.setItem('user', JSON.stringify(response.data))
             setUser(response.data)
             return response.data
@@ -112,7 +112,7 @@ const Login=()=>{
         },
       };
       const response = await axios.get(
-        "http://localhost:5000/api/goals",
+        baseUrl+"/api/goals",
         config
       );
       console.log(response);
