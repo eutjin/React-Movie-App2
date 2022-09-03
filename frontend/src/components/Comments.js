@@ -79,7 +79,7 @@ useEffect(()=> {
             active: true,
 
         }
-        console.log(variables)
+        console.log("2", variables)
         axios.post(baseUrl+'/api/comment/saveComment', variables).then(response=>{
             if(response.data.success){
                 setComment('')
