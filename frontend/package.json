@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "proxy": "http://localhost:5000",
+  
   "private": true,
   "dependencies": {
     "@glidejs/glide": "^3.5.2",
