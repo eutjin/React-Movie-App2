@@ -68,9 +68,9 @@ const About = () => {
     setUserFormProfile({ ...userFormProfile, [event.target.name]: value });
   };
 
-  // useEffect(()=>{
-  //   getProfile();
-  //   }, [])
+  useEffect(()=>{
+    getProfile();
+    }, [])
 
   useEffect(() => {
     setUserFormProfile({ ...userFormProfile, gender: gender });

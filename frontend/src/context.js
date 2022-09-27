@@ -160,10 +160,11 @@ getCustomList()
 
 //load user profile, user must have completed profile first
   const getProfile = () => {
+    console.log("getProfile")
     const variables = {
       id: user._id,
     };
-    return axios
+    axios
       .post("http://localhost:5000/api/profile/getProfile", variables)
       .then((response) => {
         if (response.data.success) {
@@ -193,9 +194,11 @@ getCustomList()
     if (user) {
       getAllList();
       getCustomList();
+      getProfile()
     } else {
       setListTitles([]);
       setList([]);
+      setUserProfile({})
     }
   }, [user]);
 

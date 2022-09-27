@@ -153,6 +153,8 @@
     .listbtn {
     display: flex;
     justify-content: center;
+    width: 100%;
+    margin-bottom: 0.4rem;
     }
 
     .genrecentre{
@@ -169,7 +171,7 @@
     .tooltip {
       position: relative;
       display: inline-block;
-      border-bottom: 1px dotted black;
+      
     }
     
     .tooltip .tooltiptext {

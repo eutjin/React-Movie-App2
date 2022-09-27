@@ -4,7 +4,7 @@ import styles from "./Movie.module.css";
 import { useGlobalContext } from '../context'
 import { useState, useEffect } from "react";
 import noImgs from "./imgNotFound.png";
-import { AiTwotoneStar, AiOutlinePlusCircle,  } from "react-icons/ai";
+import { AiTwotoneStar, AiOutlinePlusCircle, AiFillStar } from "react-icons/ai";
 import {BsBookmarkPlus as Bs, BsFillBookmarkPlusFill} from "react-icons/bs"
 import axios from 'axios'
 import Favourites from "./Favourites";
@@ -109,8 +109,13 @@ return(
               <Link to={{pathname: `/movie/${id}`, state:{unit:"engineer"}, }} >
                 <img src={imgSrc}  className={styles.realimg}/></Link>
                 <img src={noImgs} className={styles.fakeimg}/> 
-                <p className={styles.hour}>{rhours}h {rmin}m</p>
-                <p className={styles.rating}> <AiTwotoneStar className={styles.icon}/> <p>{rating}</p></p>
+                {/* <p className={styles.hour}>{rhours}h {rmin}m</p>
+                <p className={styles.rating}> <AiFillStar className={styles.icon}/> <p>{rating}</p></p> */}
+                <div className={styles.infoOverlay}>
+                
+                <div className={styles.rating2}> <AiFillStar className={styles.icon2}/> <p>{rating}</p></div>
+                <p className={styles.hour2}>{rhours}h {rmin}m</p>
+                </div>
                 {/* <ActionIcon className={styles.customlisticon} variant="hover" color="orange" size="xl"><BsFillBookmarkPlusFill color="orange"  size={32}/></ActionIcon> */}
                 <div className={styles.customlisticon}><AddList movieId={id} variable={variable}/></div>
               </div>

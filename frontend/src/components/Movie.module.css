@@ -9,7 +9,8 @@
 } 
 
   .container {
-    width: 230px;
+    --containerWidth: 215px;
+    width: var(--containerWidth);
     background: #2c2c2c;
     /* height: 480px; */
     color: white;
@@ -60,8 +61,8 @@
     position: absolute;
     top: 0px;
     z-index: 0;
-   width: 230px;
-   height: 345px;
+   width: var(--containerWidth);
+   height: calc(var(--containerWidth) * 1.5);
   }
   .box .content{
     margin: 5px 10px;
@@ -84,16 +85,17 @@
  
   .overlay{
     position: relative;
-    width: 230px;
-    height: 345px;
+    width: 100%;
+    height: calc(var(--containerWidth) * 1.5)
+   
     
     
   }
   
   .photo{
     position: relative;
-    width: 230px;
-    height: 345px;
+    width: 100%;
+    height: calc(var(--containerWidth) * 1.5);
     overflow: hidden;
     
   }
@@ -106,6 +108,29 @@
     background-color: black;
     margin: 1px 1px;
     z-index: 2;
+  }
+
+  .infoOverlay{
+    display: flex;
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    padding: 0 8px;
+    background-color: rgb(94, 94, 94);
+    margin: 1px 1px;
+    z-index: 2;
+    border-radius: 0.5rem;
+  }
+
+  .rating2{
+    display: flex;
+    align-items: center;
+  }
+
+  .rating2::after{
+    content: '|';
+    padding: 0 0.5rem;
+    
   }
 
   .customlisticon{
@@ -130,7 +155,7 @@
   }
 
   .content ul{
-    height: 1.6rem;
+    height: 1.3rem;
   }
 
   .icon{
@@ -161,11 +186,13 @@
     .listbtn {
     display: flex;
     justify-content: center;
+    width: 100%;
     }
 
     .genrecentre{
       display: flex;
     justify-content: center;
+    width: 100%;
     }
 
    
@@ -217,6 +244,12 @@
     
     .tooltip:hover .tooltiptext {
       visibility: visible;
+    }
+    @media (max-width: 420px){
+      .container{
+        --containerWidth: 190px;
+        margin: 5px;
+      }
     }
 
     /* @media (max-width: 420px){

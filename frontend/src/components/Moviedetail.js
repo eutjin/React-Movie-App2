@@ -144,7 +144,7 @@ return (
         <div className={styles.title}>
           <h3>{title} </h3>
           <p> |  {year}</p>
-        <div>
+        <div className={styles.titleIcons}>
         <AiOutlineShareAlt style={{cursor:"pointer"}} size={30} onClick={() => setModal2(true)} /> <Link to={"/"}><AiOutlineRollback size={30}/></Link>
         </div>
         </div>

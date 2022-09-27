@@ -72,13 +72,13 @@ const handleClickHome=()=>{
           <Link to="/register">Register</Link>
         </li> */}
           {user.token ? (
-            <li onClick={() => logout()}>
+            <li onClick={() => {logout(); setMenu(false)}}>
               <Link to="/">Logout</Link>
             </li>
           ) : (
             // <li><button onClick={()=>logout()}>logout</button></li>
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/login" onClick={()=>setMenu(false)}>Login</Link>
             </li>
           )}
         </ul></div>

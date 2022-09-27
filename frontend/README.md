@@ -126,6 +126,13 @@ custom list(CL): create CL, delete CL, add item to CL, delete item from CL
 32. no profile made>comment on moview>error
 33. user login behavour
 
+34. edit list name
+35. "user" in local storage
+36. add list button 3 clcikcs
+37. add list button menu width fucked
+38. fixed navbar
+
+
 bugs:
 1. when movie "abc" is added to list, then go to movie "abc" movie detail, then click genre, itgoes to page having that movie, but •
 
