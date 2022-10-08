@@ -10,7 +10,7 @@
 
   .container {
     --containerWidth: 215px;
-    width: var(--containerWidth);
+    min-width: var(--containerWidth);
     background: #2c2c2c;
     /* height: 480px; */
     color: white;
@@ -18,9 +18,13 @@
     border-radius: 10px;
     z-index: 10;
     overflow: hidden;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
     transition: 0.5s all ease-in-out;
   }
+
+  /* .container:nth-child(1){
+    margin-left: 0;
+  } */
 
   .container:hover {
     background: #504f4f;
@@ -61,7 +65,7 @@
     position: absolute;
     top: 0px;
     z-index: 0;
-   width: var(--containerWidth);
+   min-width: var(--containerWidth);
    height: calc(var(--containerWidth) * 1.5);
   }
   .box .content{
@@ -248,6 +252,7 @@
     @media (max-width: 488px){
       .container{
         --containerWidth: 180px;
+        width: var(--containerWidth);
         margin: 5px;
       }
 

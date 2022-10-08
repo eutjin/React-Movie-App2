@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Movie from "../components/Movie";
 import { useGlobalContext } from "../context";
@@ -36,6 +36,7 @@ const List = () => {
     useGlobalContext();
   const [deleteModal, setDeleteModal] = useState(false);
   const [titleId, setTitleId] = useState("");
+const ref=useRef(null);
   //   const [createList, setCreateList]= useState(false)
   //   const [listTitle, setListTitle] =useState('')
   //   const [listDesc, setListDesc] = useState('')
@@ -128,16 +129,109 @@ const List = () => {
     },
   };
 
-  const CustomRightArrow = ({ onClick }) => {
-    return (
-      <AiFillRightCircle
-        className={styles.rightButton}
-        onClick={() => onClick()}
-      />
-    );
-  };
+  // const CustomRightArrow = ({ onClick }) => {
+  //   return (
+  //     <AiFillRightCircle
+  //       className={styles.rightButton}
+  //       onClick={() => onClick()}
+  //     />
+  //   );
+  // };
 
 
+const handleLeftButton=()=>{
+
+  var width = Math.max(window.innerWidth);
+console.log('width', width)
+let size;
+if(width < 488){
+size= 190
+}else{
+  size=235
+}
+  
+  const e=ref.current;
+  console.log("scrollGET", e.scrollLeft)
+  let val1= Math.floor(e.getBoundingClientRect().width/size)
+console.log("val1",val1)
+
+let scroll1= size*val1
+console.log("scroll1",scroll1)
+
+let val2= ((e.getBoundingClientRect().width - (size*val1))/2)
+console.log("val2",val2)
+
+let scroll2=scroll1-val2
+console.log("scroll2",scroll2)
+
+let endScroll = favourites.length *size - e.getBoundingClientRect().width
+console.log("endScroll", endScroll)
+
+  // e.scrollLeft-= 905.6;
+  // console.log("scrollx", e.scrollLeft)
+
+  if(endScroll-e.scrollLeft< 10){
+    e.scrollLeft-=scroll2
+  }else{
+    e.scrollLeft-=scroll1
+  }
+
+}
+
+const handleRightButton=()=>{
+  var width = Math.max(window.innerWidth);
+  console.log('width', width)
+  let size;
+  if(width < 488){
+  size= 190
+  }else{
+    size=235
+  }
+  // const e=ref.current;
+  // console.log("scroll", e.getBoundingClientRect())
+  // e.scrollLeft+= 905.6;
+  // console.log("scroll2", e.scrollLeft)
+  const e=ref.current;
+  // console.log("scroll", e)
+  console.log("scrollGET", e.scrollLeft)
+  let val1= Math.floor(e.getBoundingClientRect().width/size)
+console.log("val1",val1)
+
+let scroll1= size*val1
+console.log("scroll1",scroll1)
+
+let val2= ((e.getBoundingClientRect().width - (size*val1))/2)
+console.log("val2",val2)
+
+let scroll2=scroll1-val2
+console.log("scroll2",scroll2)
+
+let endScroll = favourites.length *size - e.getBoundingClientRect().width
+console.log("endScroll", endScroll)
+
+  // e.scrollLeft-= 905.6;
+  // console.log("scrollx", e.scrollLeft)
+
+  if(e.scrollLeft==0){
+    e.scrollLeft+=scroll2
+  }else{
+    e.scrollLeft+=scroll1
+  }
+}
+
+// const handleLeftButton2=()=>{
+//   const e=ref.current;
+//   console.log("scroll", e)
+//   e.scrollLeft-= 940;
+//   console.log("scroll2", e.scrollLeft)
+// }
+
+// const handleRightButton2=()=>{
+//   const e=ref.current;
+//   console.log("scroll", e.getBoundingClientRect())
+//   e.scrollLeft+= 940;
+//   console.log("scroll2", e.scrollLeft)
+// }
   return (
     <section className={styles.contents}>
       {user._id ? (
@@ -157,7 +251,7 @@ const List = () => {
               <CreateCustomList />
             </Group>
 
-            <div className={styles.carouselContainer}>
+            {/* <div className={styles.carouselContainer}>
               <Carousel
                 responsive={responsive}
                 customRightArrow={<CustomRightArrow />}
@@ -177,9 +271,14 @@ const List = () => {
                   />
                 ))}
               </Carousel>
-            </div>
-
-            {/* <div className={styles.grid}>
+            </div> */}
+<div className={styles.sliderContainer}>
+  <button className={styles.sliderButtonLeft} onClick={()=>handleLeftButton()}><AiOutlineLeft size={25}/></button>
+  
+  {/* <button onClick={()=>handleLeftButton2()}>left2</button>
+  <button onClick={()=>handleRightButton2()}>right2</button> */}
+  
+            <div ref={ref} className={styles.gridScroll}>
             {favourites.map((movie) => (
               <Movie
                 key={movie.id}
@@ -193,7 +292,7 @@ const List = () => {
                 runtime={movie.runtime}
               />
             ))}
-          </div> */}
+          </div><button className={styles.sliderButtonRight} onClick={()=>handleRightButton()}><AiOutlineRight size={25}/></button></div>
           </Card>
 
           {listTitles.map((title) => (
