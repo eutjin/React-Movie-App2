@@ -17,7 +17,7 @@ const getLocalStorageUser=()=>{
   if(storage){
     return JSON.parse(storage)
   }else{
-    return [];
+    return {};
   }
 }
 
@@ -81,6 +81,10 @@ const AppProvider = ({ children }) => {
       
     }
 
+useEffect(()=>{
+setPage(1)
+}, [rating, genre, query])
+
     useEffect(() => {
         fetchMovie();
     }, [rating, genre, page]);
@@ -110,6 +114,11 @@ const AppProvider = ({ children }) => {
         }
         return prevPage
       })
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
     }
 
     const nextPage=()=>{
@@ -120,6 +129,7 @@ const AppProvider = ({ children }) => {
         }
         return nextPage
       })
+      window.scrollTo(0, 0);
     }
 
     useEffect(()=>{
@@ -253,8 +263,8 @@ return response.data
     <AppContext.Provider
       value={{
         loading,
-        movies,
-        rating,
+        movies, fetchMovie,
+        rating, setRating,
         genre,
         setGenre,
         onChangeGenre,

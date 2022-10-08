@@ -1,25 +1,41 @@
-import React , {useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Movie from "../components/Movie";
-import { useGlobalContext } from '../context'
-import styles from './list.module.css'
+import { useGlobalContext } from "../context";
+import styles from "./list.module.css";
 
-
-import {Card, Text, Group, Button, Modal, Input, Textarea, Title, createStyles, Center} from "@mantine/core"
-import axios from 'axios';
-import CreateCustomList from "../components/CreateCustomList"
+import {
+  Card,
+  Text,
+  Group,
+  Button,
+  Modal,
+  Input,
+  Textarea,
+  Title,
+  createStyles,
+  Center,
+} from "@mantine/core";
+import axios from "axios";
+import CreateCustomList from "../components/CreateCustomList";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { AiOutlineLeft, AiOutlineRight, AiOutlineSearch, AiFillRightCircle} from "react-icons/ai";
+import {
+  AiOutlineLeft,
+  AiOutlineRight,
+  AiOutlineSearch,
+  AiFillRightCircle,
+} from "react-icons/ai";
+import { BsBookmarkPlus, BsChatLeftText, BsBox} from "react-icons/bs";
+
 import baseUrl from "../BaseUrl";
 
-const List=()=>{
-    
-
-    const {favourites, user, listTitles, list, getAllList, getCustomList}=useGlobalContext();
-    const [deleteModal, setDeleteModal]=useState(false)
-    const [titleId, setTitleId]= useState('')
+const List = () => {
+  const { favourites, user, listTitles, list, getAllList, getCustomList } =
+    useGlobalContext();
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [titleId, setTitleId] = useState("");
   //   const [createList, setCreateList]= useState(false)
   //   const [listTitle, setListTitle] =useState('')
   //   const [listDesc, setListDesc] = useState('')
@@ -55,106 +71,115 @@ const List=()=>{
 
   const useStyles = createStyles((theme) => ({
     card: {
-      
       backgroundColor: "#3c3c3c",
-      
     },
     content: {
-      
-    color: "#FFAE42",
+      color: "#FFAE42",
       margin: 10,
     },
-    
   }));
   const { classes } = useStyles();
 
-    const handleDelCustomList=async()=>{
-      
-      const response=  await axios.delete(baseUrl+"/api/list/deleteList/"+titleId)
-      console.log(response.data)
-      
-      await getAllList()
-      await getCustomList()
-      await setDeleteModal(false)
-      await setTitleId('')
-      return response.data
+  const handleDelCustomList = async () => {
+    const response = await axios.delete(
+      baseUrl + "/api/list/deleteList/" + titleId
+    );
+    console.log(response.data);
 
-      console.log('mickey')
-    }
+    await getAllList();
+    await getCustomList();
+    await setDeleteModal(false);
+    await setTitleId("");
+    return response.data;
 
-    const handleDeleteBtn=(id)=>{
-      setTitleId(id)
-      setDeleteModal(true)
-    }
+    console.log("mickey");
+  };
 
-    useEffect(()=>{
-      
-      getAllList()
-      getCustomList()
-    }, [])
+  const handleDeleteBtn = (id) => {
+    setTitleId(id);
+    setDeleteModal(true);
+  };
 
-    const responsive = {
-      superLargeDesktop: {
-        // the naming can be any, depends on you.
-        breakpoint: { max: 4000, min: 3000 },
-        items: 5
-      },
-      desktop: {
-        breakpoint: { max: 3000, min: 1024 },
-        items: 5,
-        partialVisibilityGutter: 20
+  useEffect(() => {
+    getAllList();
+    getCustomList();
+  }, []);
 
-      },
-      tablet: {
-        breakpoint: { max: 768, min: 481 },
-        items: 3.5,
-        partialVisibilityGutter: 20
-      },
-      mobile: {
-        breakpoint: { max: 480, min: 320 },
-        items: 2,
-        // partialVisibilityGutter: 20,
-      }
-    };
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 5,
+      partialVisibilityGutter: 20,
+    },
+    tablet: {
+      breakpoint: { max: 768, min: 481 },
+      items: 3.5,
+      partialVisibilityGutter: 20,
+    },
+    mobile: {
+      breakpoint: { max: 480, min: 320 },
+      items: 2,
+      // partialVisibilityGutter: 20,
+    },
+  };
 
-
-    const CustomRightArrow = ({ onClick }) => {
-      return <AiFillRightCircle className={styles.rightButton} onClick={() => onClick()} />;
-    };
+  const CustomRightArrow = ({ onClick }) => {
     return (
-      <section className={styles.contents}>
-        <Card my="md" p="xs" className={classes.card}>
-          <Group>
-            <div className={styles.listTitleGroup}>
-            <Title order={2} weight={100}color="#FFAE42">Watchlist</Title>
-              
-              <Text size="xs" color="white">
-                {favourites.length} movies in watchlist
-              </Text>
+      <AiFillRightCircle
+        className={styles.rightButton}
+        onClick={() => onClick()}
+      />
+    );
+  };
+
+
+  return (
+    <section className={styles.contents}>
+      {user._id ? (
+        <>
+          <Card my="md" p="xs" className={classes.card}>
+            <Group>
+              <div className={styles.listTitleGroup}>
+                <Title order={2} weight={100} color="#FFAE42">
+                  Watchlist
+                </Title>
+
+                <Text size="xs" color="white">
+                  {favourites.length} movies in watchlist
+                </Text>
+              </div>
+              {/* <Button onClick={()=>setCreateList(true)}>Create custom list</Button> */}
+              <CreateCustomList />
+            </Group>
+
+            <div className={styles.carouselContainer}>
+              <Carousel
+                responsive={responsive}
+                customRightArrow={<CustomRightArrow />}
+                showDots={false}
+              >
+                {favourites.map((movie) => (
+                  <Movie
+                    key={movie.id}
+                    id={movie.id}
+                    rating={movie.rating}
+                    imgSrc={movie.imgSrc}
+                    title={movie.title}
+                    summary={movie.summary}
+                    genres={movie.genres}
+                    movie={movie}
+                    runtime={movie.runtime}
+                  />
+                ))}
+              </Carousel>
             </div>
-            {/* <Button onClick={()=>setCreateList(true)}>Create custom list</Button> */}
-            <CreateCustomList/>
-          </Group>
 
-          
-<div className={styles.carouselContainer}>
-          <Carousel responsive={responsive} customRightArrow={<CustomRightArrow />} showDots={false}>
-            {favourites.map((movie) => (
-              <Movie
-                key={movie.id}
-                id={movie.id}
-                rating={movie.rating}
-                imgSrc={movie.imgSrc}
-                title={movie.title}
-                summary={movie.summary}
-                genres={movie.genres}
-                movie={movie}
-                runtime={movie.runtime}
-              />
-            ))}
-          </Carousel></div>
-
-          {/* <div className={styles.grid}>
+            {/* <div className={styles.grid}>
             {favourites.map((movie) => (
               <Movie
                 key={movie.id}
@@ -169,49 +194,63 @@ const List=()=>{
               />
             ))}
           </div> */}
-        </Card>
+          </Card>
 
-        {listTitles.map((title)=><>
-        <Card my="md" p="xs" className={classes.card} >
-          <Group>
-          <div className={classes.content}>
-          <Title order={2}>{title.listTitle}</Title>
-          <Text size="xs" color="white">{(list.filter(list=>list.list._id==title._id)).length} movies in "{title.listTitle} list</Text>
-          </div>
-          <Button onClick={()=>handleDeleteBtn(title._id)} className={styles.deleteButton}>Delete List</Button>
-          {/* <Button onClick={()=>handleDelCustomList(title._id)}>delete</Button> */}
-          </Group>
-          <div className={styles.grid}>
-            {list.filter(list=>list.list._id==title._id).map((list)=>
-            <Movie
-            key={list.id}
-            id={list.id}
-            rating={list.rating}
-            imgSrc={list.imgSrc}
-            title={list.title}
-            summary={list.summary}
-            genres={list.genres}
-            movie={list}
-            runtime={list.runtime}
-          />
-            )}
-          </div>
-        
-          <Modal size="sm" opened={deleteModal} onClose={()=>setDeleteModal(false)} title="Are you sure to delete this list? This action cannot be undone.">
-         <Center>
-          <Group>
-          <Button onClick={()=>handleDelCustomList()}>Yes</Button>
-          <Button onClick={()=>setDeleteModal(false)}>No</Button>
-          </Group>
-          </Center>
-    </Modal>
-        </Card>
-          
-    </>
-        )}
-       
+          {listTitles.map((title) => (
+            <>
+              <Card my="md" p="xs" className={classes.card}>
+                <Group>
+                  <div className={classes.content}>
+                    <Title order={2}>{title.listTitle}</Title>
+                    <Text size="xs" color="white">
+                      {list.filter((list) => list.list._id == title._id).length}{" "}
+                      movies in "{title.listTitle} list
+                    </Text>
+                  </div>
+                  <Button
+                    onClick={() => handleDeleteBtn(title._id)}
+                    className={styles.deleteButton}
+                  >
+                    Delete List
+                  </Button>
+                  {/* <Button onClick={()=>handleDelCustomList(title._id)}>delete</Button> */}
+                </Group>
+                <div className={styles.grid}>
+                  {list
+                    .filter((list) => list.list._id == title._id)
+                    .map((list) => (
+                      <Movie
+                        key={list.id}
+                        id={list.id}
+                        rating={list.rating}
+                        imgSrc={list.imgSrc}
+                        title={list.title}
+                        summary={list.summary}
+                        genres={list.genres}
+                        movie={list}
+                        runtime={list.runtime}
+                      />
+                    ))}
+                </div>
 
-        {/* <Modal
+                <Modal
+                  size="sm"
+                  opened={deleteModal}
+                  onClose={() => setDeleteModal(false)}
+                  title="Are you sure to delete this list? This action cannot be undone."
+                >
+                  <Center>
+                    <Group>
+                      <Button onClick={() => handleDelCustomList()}>Yes</Button>
+                      <Button onClick={() => setDeleteModal(false)}>No</Button>
+                    </Group>
+                  </Center>
+                </Modal>
+              </Card>
+            </>
+          ))}
+
+          {/* <Modal
           opened={createList}
           onClose={() => setCreateList(false)}
           title="Create custom list">
@@ -225,12 +264,37 @@ const List=()=>{
           
         </Modal> */}
 
-        <div>
-          <Link to="/">BACK HOME</Link>
+          {/* <div>
+        <Link to="/">BACK HOME</Link>
+      </div> */}
+        </>
+      ) : (
+        <div className={styles.noUserPrompt}>
+          <div className={styles.noUserLeft}>
+            <div className={styles.noUserLeftTitle}>Benefits of your free MoviReVue account</div>
+            <div className={styles.noUserLeftContent1}><BsBookmarkPlus size={22}/> Your Watchlist</div>
+            <div className={styles.noUserLeftContent2}>Track every moves your want to watch and add them into your watchlist</div>
+
+            <div className={styles.noUserLeftContent1}><BsBox size={22}/>Custom List</div>
+            <div className={styles.noUserLeftContent2}>Create and share customized watchlists</div>
+
+            <div className={styles.noUserLeftContent1}><BsChatLeftText size={22}/>Movie Reviews</div>
+            <div className={styles.noUserLeftContent2}>Write reviews for movies which you have watched</div>
+          </div>
+          <div className={styles.noUserRight}>
+
+          
+            <div className={styles.noUserRightTitle}>
+            Get Started
+          </div>
+          <Link to="/login"><button className={styles.login}>Login</button></Link>
+          <Link to="/register"><button className={styles.register}>Register</button></Link>
+          </div>
+         
         </div>
-      </section>
-    );
+      )}
+    </section>
+  );
+};
 
-}
-
-export default List
+export default List;

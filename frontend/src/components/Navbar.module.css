@@ -48,13 +48,7 @@
     align-items: center;
 }
 
-.navlinks li {
-/* display: inline-block;
-padding: 0 20px; */
-height: 100%;
 
-
-}
 
 
 .navlinks li {
@@ -62,16 +56,17 @@ height: 100%;
     align-items: center;
     justify-content: center;
     padding: 15px;
+    height: 100%;
 }
 
-.navlinks li:hover{
+/* .navlinks li:hover{
     background-color: rgb(110, 110, 110);
     transition: 0.4s;
 
    
-}
+} */
 
-.navlinks li:hover > a {
+.navlinks li:hover  {
     color: rgb(230, 171, 82);
     /* font-weight: bold; */
     transition: 0.4s;

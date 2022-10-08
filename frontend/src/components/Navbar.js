@@ -57,29 +57,29 @@ const handleClickHome=()=>{
 {/* {menu? ():null} */}
 <div className={menu?styles.navlinkContainerOn:styles.navlinkContainerOff}>
         <ul className={styles.navlinks}  >
-          <li>
+          
             <Link to="/" onClick={()=>handleClickHome()}>
-              Home
+            <li> Home</li>
             </Link>
-          </li>
-          <li>
-            <Link to="/about" onClick={()=>setMenu(false)}>About</Link>
-          </li>
-          <li>
-            <Link to="/list" onClick={()=>setMenu(false)}>My List</Link>
-          </li>
+          
+          {user._id && <Link to="/about" onClick={()=>setMenu(false)}><li>About</li></Link>}
+            
+          
+          
+            <Link to="/list" onClick={()=>setMenu(false)}><li>My List</li></Link>
+          
           {/* <li>
           <Link to="/register">Register</Link>
         </li> */}
           {user.token ? (
-            <li onClick={() => {logout(); setMenu(false)}}>
-              <Link to="/">Logout</Link>
-            </li>
+            
+              <Link to="/" onClick={() => {logout(); setMenu(false)}}><li >Logout</li></Link>
+            
           ) : (
             // <li><button onClick={()=>logout()}>logout</button></li>
-            <li>
-              <Link to="/login" onClick={()=>setMenu(false)}>Login</Link>
-            </li>
+           
+              <Link to="/login" onClick={()=>setMenu(false)}> <li>Login</li></Link>
+            
           )}
         </ul></div>
 

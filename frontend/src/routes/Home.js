@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import Movie from "../components/Movie";
 import { useGlobalContext } from "../context";
 import styles from "./home.module.css";
-import { AiOutlineLeft, AiOutlineRight, AiOutlineSearch} from "react-icons/ai";
+import { AiOutlineLeft, AiOutlineRight, AiOutlineSearch } from "react-icons/ai";
 
 function Home() {
+  const [loadingArray, setLoadingArray] = useState([...Array(20).keys()]);
   //   const [loading, setLoading] = useState(true);
   // const [movies, setMovies] = useState([]);
   // //rating selector view
@@ -23,7 +24,6 @@ function Home() {
   //     });
   // }, [genre]);
   const genre_list = [
-    
     "comedy",
     "sci-fi",
     "horror",
@@ -38,8 +38,8 @@ function Home() {
 
   const {
     loading,
-    movies,
-    rating,
+    movies, fetchMovie,
+    rating, setRating,
     genre,
     setGenre,
     onChangeGenre,
@@ -55,7 +55,7 @@ function Home() {
     prevPage,
   } = useGlobalContext();
 
-  
+  useEffect(() => {}, []);
 
   useEffect(() => {
     let nb = Math.ceil(results / 20);
@@ -66,6 +66,14 @@ function Home() {
   //   document.getElementById("genre").value= genre;
 
   // },[genre])
+
+const handleBackHome=()=>{
+  setGenre("all")
+  setQuery("")
+  setRating(0)
+fetchMovie()
+  
+}
 
   return (
     <section className={styles.header}>
@@ -79,74 +87,78 @@ function Home() {
           </div>
         </form> */}
         {/* <button onClick={useEffect}>Search</button> */}
-        <div className={styles.text}> 
-        <h2>Look no further.</h2>
-        <h2>Your search for movies start here.</h2>
+        <div className={styles.text}>
+          <h2>Look no further.</h2>
+          <h4>Your search for movies start here.</h4>
         </div>
-       
+
         <div className={styles.barcontainer}>
-        <div className={styles.bars}>
-          {/* genre */}
-          
-          <div className={styles.genrebar}>
-            <select
-              value={genre}
-              id="genre"
-              placeholder={genre}
-              type="text"
-              onChange={onChangeGenre}
-            >
-              <option value="all">All Genres</option>
-              {genre_list.map((g) => (
-                <option value={g}>{g}</option>
-              ))}
-            </select>
-          </div>
+          <div className={styles.bars}>
+            {/* genre */}
 
-          <div className={styles.ratingbar}>
-            <select
-              value={rating}
-              id="rating"
-              placeholder={rating}
-              type="number"
-              onChange={onChangeRating}
-            >
-              <option value="0">All Ratings</option>
-              <option value="9">9</option>
-              <option value="8">8</option>
-              <option value="7">7</option>
-              <option value="6">6</option>
-              <option value="5">5</option>
-              <option value="4">4</option>
-              <option value="3">3</option>
-              <option value="2">2</option>
-              <option value="1">1</option>
-            </select>
-          </div>
-
-          <div className={styles.formbar}>
-            <form >
-              <input
+            <div className={styles.genrebar}>
+              <select
+                value={genre}
+                id="genre"
+                placeholder={genre}
                 type="text"
-                placeholder="search"
-                value={query}
-                className={styles.formsize}
-                onChange={(e) => {
-                  setQuery(e.target.value);
-                }}
-              />
-              <button className={styles.button} onClick={handleSubmit}>
-               <AiOutlineSearch />
-              </button>
-            </form>
-          </div>
+                onChange={onChangeGenre}
+              >
+                <option value="all">All Genres</option>
+                {genre_list.map((g) => (
+                  <option value={g}>{g}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className={styles.ratingbar}>
+              <select
+                value={rating}
+                id="rating"
+                placeholder={rating}
+                type="number"
+                onChange={onChangeRating}
+              >
+                <option value="0">All Ratings</option>
+                <option value="9">9</option>
+                <option value="8">8</option>
+                <option value="7">7</option>
+                <option value="6">6</option>
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+              </select>
+            </div>
+
+            <div className={styles.formbar}>
+              <form>
+                <input
+                  type="text"
+                  placeholder="search"
+                  value={query}
+                  className={styles.formsize}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                  }}
+                />
+                <button className={styles.button} onClick={handleSubmit}>
+                  <AiOutlineSearch />
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
 
       <div className={styles.contents}>
         {loading ? (
-          <h1>Loading...</h1>
+          <div className={styles.grid}>
+            {loadingArray.map((movie) => (
+              <div className={styles.dummyContainer}></div>
+            ))}
+          </div>
         ) : movies ? (
           <div className={styles.grid}>
             {movies.map((movie) => (
@@ -165,22 +177,34 @@ function Home() {
             ))}
           </div>
         ) : (
-          <div>nothing here</div>
+          <div className={styles.noResults} >
+            <div className={styles.noResultsLine1}> No search results. </div>
+            <div className={styles.noResultsLine2}> Please change your search terms. </div>
+            <div className={styles.noResultsButton} onClick={()=>handleBackHome()}> Back to Home </div>
+          </div>
         )}
       </div>
 
-      <div className={styles.pageset}>
-        <p className="prev" onClick={prevPage}>
-          <AiOutlineLeft style={{ fontSize: "2rem" }} />
-        </p>
+{movies ? (<div className={styles.pageset}>
+        <div className={styles.pagesetPrev} onClick={prevPage}>
+          <AiOutlineLeft />
+        </div>
         <p className="">
-          {" "}
-          {page}/{numPage} pages{" "}
+          {page}/{numPage} pages
         </p>
-        <p className="prev" onClick={nextPage}>
-          <AiOutlineRight style={{ fontSize: "2rem" }} />
-        </p>
-      </div>
+        <div className={styles.pagesetNext} onClick={nextPage}>
+          <AiOutlineRight />
+        </div>
+        <div
+          className={styles.pagesetTop}
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+        >
+          Back to Top
+        </div>
+      </div>):(null)}
+      
     </section>
   );
 }

@@ -9,7 +9,7 @@ background: black;
     background: linear-gradient(143deg, rgba(59,55,117,1) 0%, rgba(0,121,114,1) 24%, rgba(247,203,125,1) 73%); */
     background: rgb(0,0,0);
 background: linear-gradient(140deg, rgba(0,0,0,1) 7%, rgba(61,54,54,1) 37%, rgba(233,179,81,1) 88%);
-    padding: 20px 10px;
+    padding: 1rem 1rem;
     font-family: "poppins";
     max-width: 1280px;
     display: block;
@@ -42,22 +42,47 @@ background: linear-gradient(140deg, rgba(0,0,0,1) 7%, rgba(61,54,54,1) 37%, rgba
     font-family: "poppins";
     justify-content: center;
     flex-direction: row;
-    align-items: flex-start;
-    padding: 50px 10px;
-
-
+    align-items: center;
+    padding: 2rem 1rem;
+position: relative;
+max-width: 1280px;
+margin: 0 auto;
 }
 
-.pageset div{
+.pagesetTop{
+    position: absolute;
+    right: 1rem;
+    background-color: #a0a0a0;
+    color: white;
+    padding: 0.5rem 0.7rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
     cursor: pointer;
 }
-.pageset p:hover{
-    color: orange;
+.pagesetTop:hover{
+    background-color: #5f5f5f;
 }
+
 
 .pageset p{
     margin: 0 10px;
     font-size: 1.3rem;
+    
+}
+
+.pagesetPrev {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+.pagesetNext{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-left: 1rem;
 }
 
 .bars{
@@ -106,7 +131,7 @@ background: linear-gradient(140deg, rgba(0,0,0,1) 7%, rgba(61,54,54,1) 37%, rgba
 
 select {
     border: none;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-family: "poppins";
     padding: 0 10px;
     width: 100%;
@@ -137,7 +162,7 @@ select {
     border: none;
     padding: 10px 10px;
     font-family: "poppins";
-    font-size: 1rem;
+    font-size: 0.9rem;
     width: calc(100% - 40px);
 }
 
@@ -180,7 +205,77 @@ a { text-decoration: none; }
   margin-right: auto;
 }
 
-@media (max-width: 420px){
+.loading{
+    color: white;
+}
+
+
+.dummyContainer{
+    --containerWidth: 215px;
+    width: var(--containerWidth);
+    background: #686868;
+    height: calc( var(--containerWidth) * 2 );
+    color: white;
+    margin: 10px 10px;
+    border-radius: 10px;
+    z-index: 10;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    animation: blink 1s linear infinite;
+}
+
+.noResults{
+    background-color: #363636;
+    border-radius: 0.5rem;
+    margin: 1rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.noResultsLine1{
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-family: "poppins";
+}
+.noResultsLine2{
+    color: white;
+    font-size: 0.9rem;
+    font-family: "poppins";
+}
+
+.noResultsButton{
+background-color: white;
+color: #363636;
+    font-size: 0.9rem;
+    font-family: "poppins";
+    padding: 0.5rem 1rem;
+    margin-top: 3rem;
+    border-radius: 0.5rem ;
+    cursor: pointer;
+   
+}
+
+.noResultsButton:hover{
+    background-color: #c9c9c9;
+}
+
+@keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: .5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+@media (max-width: 600px){
     .contents{
         max-width: 100vw;
     }
@@ -191,27 +286,36 @@ a { text-decoration: none; }
         flex-wrap: wrap;
     }
     .text{
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
     .genrebar {
         width: 100%;
-        border-radius: 15px;
+        border-radius: 5px;
     overflow: hidden;
     perspective: 1px;
     }
     .ratingbar {
         width: 100%;
-        border-radius: 15px;
+        border-radius: 5px;
         overflow: hidden;
         perspective: 1px;
     }
     .formbar {
         width: 100%;
-        border-radius: 15px;
+        border-radius: 5px;
         overflow: hidden;
-        perspective: 1px;
+        
     }
     .text{
         display: none;
     }
 }
+
+@media (max-width: 488px){
+    .dummyContainer{
+      --containerWidth: 180px;
+      margin: 5px;
+    }
+
+    
+  }

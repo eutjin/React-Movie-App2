@@ -12,7 +12,7 @@ import baseUrl from "../BaseUrl";
 function Favourites({movieId, variable}){
 const {handleFavouriteSubmit, favourites, setFavourites, user}=useGlobalContext();
 
-    
+    console.log("fav", window.location.href.includes("movie"))
 
     const handleAddList1=(movieId, variable)=>{
         
@@ -85,7 +85,7 @@ return (
   <div className={styles.tooltip}>
               <div className={styles.listbtn}>
     <button
-      className={styles.button1}
+      className={window.location.href.includes("movie")?styles.button2: styles.button1}
       onClick={() => {
         handleAddList1(movieId, variable);
       }}

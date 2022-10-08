@@ -116,10 +116,10 @@
     bottom: 3px;
     right: 3px;
     padding: 0 8px;
-    background-color: rgb(94, 94, 94);
+    background-color: rgb(27, 27, 27);
     margin: 1px 1px;
     z-index: 2;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
   }
 
   .rating2{
@@ -245,10 +245,18 @@
     .tooltip:hover .tooltiptext {
       visibility: visible;
     }
-    @media (max-width: 480px){
+    @media (max-width: 488px){
       .container{
         --containerWidth: 180px;
         margin: 5px;
+      }
+
+      .box {
+       
+        font-size: 0.7rem;
+        
+        
+    
       }
     }
 

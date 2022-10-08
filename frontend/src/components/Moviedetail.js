@@ -134,7 +134,7 @@ return (
         <div className={styles.imgButtons}>
         <button onClick={openModal} className={styles.play}>
           <AiOutlinePlayCircle className={styles.play2} />
-          <p className={styles.play3}>Watch Trailer</p>{" "}
+          <p className={styles.play3}>Watch Trailer</p>
         </button>
         <Favourites movieId={id} variable={variable}/>
         </div>
@@ -145,7 +145,7 @@ return (
           <h3>{title} </h3>
           <p> |  {year}</p>
         <div className={styles.titleIcons}>
-        <AiOutlineShareAlt style={{cursor:"pointer"}} size={30} onClick={() => setModal2(true)} /> <Link to={"/"}><AiOutlineRollback size={30}/></Link>
+        <AiOutlineShareAlt style={{cursor:"pointer"}} size={24} onClick={() => setModal2(true)} /> <Link to={"/"}><AiOutlineRollback size={24}/></Link>
         </div>
         </div>
         
