@@ -324,7 +324,7 @@ const About = () => {
             <div className={Styles.avatar}>
               
                   <Avatar size={150} radius={100} >
-                    <Image height={150} src={userProfile.avatar} />
+                    {userProfile.avatar? <Image height={150} src={userProfile.avatar} />: null }
                   </Avatar>
                 
               <button
@@ -422,7 +422,7 @@ const About = () => {
                           >
                             <Group>
                               <Avatar size={30} radius={100} color="indigo">
-                                <Image height={30} src={item.userProfile.avatar} />
+                                {item.userProfile.avatar ?<Image height={30} src={item.userProfile.avatar} /> : null}
                               </Avatar>
 
                               <Text>{item.profile.name}</Text>

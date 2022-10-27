@@ -175,10 +175,13 @@ margin: 0 auto;
     align-items: center;
     gap: 0.3rem;
     position: relative;
+    scroll-behavior: smooth;
     /* padding: 0 1rem; */
   }
 
   .sliderButtonLeft{
+    background-color: rgb(170, 170, 170);
+    opacity: 0.7;
     position: absolute;
     left: 0;
     width: 2rem;
@@ -191,6 +194,8 @@ margin: 0 auto;
     justify-content: center;
   }
   .sliderButtonRight{
+    background-color: rgb(170, 170, 170);
+    opacity: 0.7;
     position: absolute;
     right: 0;
     width: 2rem;
@@ -203,6 +208,116 @@ margin: 0 auto;
     justify-content: center;
   }
 
+  .emptyListContainer{
+    padding:1rem;
+    /* background-color: rgb(83, 83, 83); */
+    /* border: 1px solid rgb(119, 119, 119); */
+    margin: 1rem;
+    border-radius: 1rem;
+    height: 11rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(250, 250, 250);
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  }
+
+  .addListContainer{
+    padding:1rem;
+    /* background-color: rgb(83, 83, 83); */
+    /* border: 1px solid rgb(119, 119, 119); */
+  
+    height: 9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(250, 250, 250);
+  }
+
+
+  .toHomeButton{
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    margin-top: 2rem;
+    font-weight: 600;
+    background-color: rgb(43, 43, 43);
+    color: white;
+font-size: 0.9rem;
+  }
+
+  .addListText{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .contentOptions{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .optionBtn{
+    border: none;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(224, 224, 224);
+  }
+
+  .optionBtn:hover{
+    background-color: rgb(114, 114, 114);
+  }
+
+  .contentTop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .contentLeft{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .descToggle{
+    width: 1.8rem;
+    height: 1.8rem;
+    border:none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(224, 224, 224);
+    border-radius: 0.2rem;
+  }
+
+  .descToggle:hover{
+    background-color: rgb(114, 114, 114);
+  }
+
+  .descContainer{
+    margin: 0.5rem;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+border-radius: 0.5rem;
+
+  }
+
+  .descContainerNone{
+    display: none;
+  }
+  body html {scroll-behavior: smooth;}
 @media (max-width: 480px){
     .noUserRight{width: 100%}
     .noUserLeft{width: 100%; border: none; border-bottom:1px solid rgb(187, 187, 187);

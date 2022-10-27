@@ -173,6 +173,8 @@ fetchMovie()
                 genres={movie.genres}
                 movie={movie}
                 runtime={movie.runtime}
+
+               
               />
             ))}
           </div>

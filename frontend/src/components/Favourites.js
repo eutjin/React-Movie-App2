@@ -12,7 +12,7 @@ import baseUrl from "../BaseUrl";
 function Favourites({movieId, variable}){
 const {handleFavouriteSubmit, favourites, setFavourites, user}=useGlobalContext();
 
-    console.log("fav", window.location.href.includes("movie"))
+    // console.log("fav", window.location.href.includes("movie"))
 
     const handleAddList1=(movieId, variable)=>{
         

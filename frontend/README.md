@@ -131,6 +131,9 @@ custom list(CL): create CL, delete CL, add item to CL, delete item from CL
 36. add list button 3 clcikcs
 37. add list button menu width fucked
 38. fixed navbar
+39. upload photo, no indicator for success
+40. empty watchlist but it has carousel button (try include some illustration)
+41. 
 
 
 bugs:

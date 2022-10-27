@@ -90,8 +90,8 @@
   .overlay{
     position: relative;
     width: 100%;
-    height: calc(var(--containerWidth) * 1.5)
-   
+    height: calc(var(--containerWidth) * 1.5);
+   overflow: hidden;
     
     
   }
@@ -249,6 +249,18 @@
     .tooltip:hover .tooltiptext {
       visibility: visible;
     }
+
+    .containerLarge{
+      background-color: red;
+      
+    }
+
+
+
+
+
+
+
     @media (max-width: 488px){
       .container{
         --containerWidth: 180px;

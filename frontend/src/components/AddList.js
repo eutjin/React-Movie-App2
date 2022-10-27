@@ -62,7 +62,7 @@ function AddList({movieId, variable, }) {
     menuBody:{
       backgroundColor: "#2c2c2c",
       border: "none",
-      width: "80%",
+      width: "180px",
     }
   }))
 
