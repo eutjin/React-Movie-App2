@@ -1,5 +1,6 @@
 import React, { useState, useContext, useReducer, useEffect } from "react";
 import axios from "axios";
+import baseUrl from "./BaseUrl";
 
 const AppContext = React.createContext();
 
@@ -155,7 +156,7 @@ const AppProvider = ({ children }) => {
       user: user._id,
     };
     axios
-      .post("http://localhost:5000/api/list/getAllList", variable)
+      .post(baseUrl + "/api/list/getAllList", variable)
       .then((response) => {
         console.log(response.data.lists);
         setListTitles(response.data.lists);
@@ -175,7 +176,7 @@ const AppProvider = ({ children }) => {
       id: user._id,
     };
     axios
-      .post("http://localhost:5000/api/profile/getProfile", variables)
+      .post(baseUrl + "/api/profile/getProfile", variables)
       .then((response) => {
         if (response.data.success) {
           console.log("heehaw", response.data.result);
@@ -223,7 +224,7 @@ const AppProvider = ({ children }) => {
     };
     console.log(config);
     const response = await axios.post(
-      "http://localhost:5000/api/goals",
+      baseUrl + "/api/goals",
       listData,
       config
     );
@@ -245,7 +246,7 @@ const AppProvider = ({ children }) => {
       },
     };
     axios
-      .post("http://localhost:5000/api/list/getCustomList", variable, config)
+      .post(baseUrl + "/api/list/getCustomList", variable, config)
       .then((response) => {
         if (response.data.success) {
           setList(response.data.result);
