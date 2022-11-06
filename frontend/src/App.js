@@ -10,6 +10,7 @@ import Login from "./routes/Login";
 import Register from "./routes/Register";
 import Profile from "./routes/Profile";
 import { MantineProvider } from '@mantine/core';
+import Explore from "./routes/Explore";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route path="/about">
           <About/>
+        </Route>
+        <Route path="/explore">
+          <Explore/>
         </Route>
         <Route path="/profile/:id">
           <Profile/>

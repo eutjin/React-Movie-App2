@@ -3,6 +3,7 @@ import Movie from "../components/Movie";
 import { useGlobalContext } from "../context";
 import styles from "./home.module.css";
 import { AiOutlineLeft, AiOutlineRight, AiOutlineSearch } from "react-icons/ai";
+import TopList from "../components/TopList";
 
 function Home() {
   const [loadingArray, setLoadingArray] = useState([...Array(20).keys()]);
@@ -153,6 +154,7 @@ fetchMovie()
       </div>
 
       <div className={styles.contents}>
+        
         {loading ? (
           <div className={styles.grid}>
             {loadingArray.map((movie) => (

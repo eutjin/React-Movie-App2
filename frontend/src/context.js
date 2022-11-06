@@ -45,6 +45,7 @@ const AppProvider = ({ children }) => {
   const [listTitles, setListTitles] = useState([]);
   const [list, setList] = useState([]);
   const [adding, setAdding] = useState(false);
+  const [topTen, setTopTen] = useState({});
   // const onChangeQuery = (event) => {setQuery(event.target.value);};
 
   // const fetchMovie=()=>{
@@ -82,6 +83,19 @@ const AppProvider = ({ children }) => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    let url =
+      "https://yts.mx/api/v2/list_movies.json?page=1&minimum_rating=7&sort_by=year";
+    axios
+      .post(
+        "https://yts.mx/api/v2/list_movies.json?page=1&minimum_rating=7&sort_by=year"
+      )
+      .then((response) => {
+        console.log("dfdf", response.data.data.movies);
+        setTopTen(response.data.data.movies)
+      });
+  }, []);
 
   useEffect(() => {
     setPage(1);
@@ -149,18 +163,17 @@ const AppProvider = ({ children }) => {
     setGenre("all");
     setQuery("");
     setPage(1);
+    fetchMovie();
   };
 
   const getAllList = () => {
     const variable = {
       user: user._id,
     };
-    axios
-      .post(baseUrl + "/api/list/getAllList", variable)
-      .then((response) => {
-        console.log(response.data.lists);
-        setListTitles(response.data.lists);
-      });
+    axios.post(baseUrl + "/api/list/getAllList", variable).then((response) => {
+      console.log(response.data.lists);
+      setListTitles(response.data.lists);
+    });
   };
 
   useEffect(() => {
@@ -223,11 +236,7 @@ const AppProvider = ({ children }) => {
       },
     };
     console.log(config);
-    const response = await axios.post(
-      baseUrl + "/api/goals",
-      listData,
-      config
-    );
+    const response = await axios.post(baseUrl + "/api/goals", listData, config);
 
     return response.data;
   };
@@ -291,7 +300,7 @@ const AppProvider = ({ children }) => {
         list,
         setList,
         getCustomList,
-        getAllList,
+        getAllList, topTen
       }}
     >
       {children}

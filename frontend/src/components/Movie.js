@@ -111,7 +111,7 @@ function Movie({
   const handleMouseEnter = (e) => {
     // setContainerHover(true);
     var rect = e.target.getBoundingClientRect();
-    // console.log("rect", rect)
+    console.log("rect", rect)
   };
 
   const handleMouseLeave = () => {

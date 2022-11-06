@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+.container{
+    /* background-color: red; */
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+.topContainer{
+    
+    padding: 1rem;
+    font-size: 1.3rem;
+    font-family: "Poppins";
+    font-weight: 600;
+    color: white;
+}

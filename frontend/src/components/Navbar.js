@@ -61,6 +61,10 @@ const handleClickHome=()=>{
             <Link to="/" onClick={()=>handleClickHome()}>
             <li> Home</li>
             </Link>
+
+            <Link to="/explore" >
+            <li> Explore</li>
+            </Link>
           
           {user._id && <Link to="/about" onClick={()=>setMenu(false)}><li>About</li></Link>}
             
