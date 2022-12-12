@@ -11,7 +11,7 @@ const registerUser = asyncHandler(async(req,res)=>{
 
     if(!name||!email|!password){
         res.status(400)
-        throw new Error('please fill all fields')
+        throw new Error('Please enter all fields')
     }
 
     //check if user exists
@@ -19,7 +19,7 @@ const registerUser = asyncHandler(async(req,res)=>{
 
     if(userExists){
         res.status(400)
-        throw new Error('user already exists')
+        throw new Error('User already exists')
     }
 
     // hash password
@@ -80,7 +80,7 @@ const getMe = asyncHandler(async(req,res)=>{
 //generate JWT
 const generateToken=(id)=>{
     return jwt.sign({id}, process.env.JWT_SECRET,{
-        expiresIn: '30d',
+        expiresIn: '5d',
     })
 }
 

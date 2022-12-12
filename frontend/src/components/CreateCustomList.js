@@ -67,7 +67,7 @@ const CreateCustomList=()=>{
               setCreateList(false)
               getAllList()
           }else{
-              alert('Failed to comment')
+              alert('Failed to create list')
               console.log(response)
           }
       })

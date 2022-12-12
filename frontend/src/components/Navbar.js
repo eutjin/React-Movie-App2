@@ -62,7 +62,7 @@ const handleClickHome=()=>{
             <li> Home</li>
             </Link>
 
-            <Link to="/explore" >
+            <Link to="/explore" onClick={()=>setMenu(false)}>
             <li> Explore</li>
             </Link>
           

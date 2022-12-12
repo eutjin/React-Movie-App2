@@ -491,7 +491,7 @@ const List = () => {
                           list.filter((list) => list.list._id == title._id)
                             .length
                         }{" "}
-                        movies in "{title.listTitle} list
+                        movies in "{title.listTitle}" list
                       </Text>
                     </div>
                     <button

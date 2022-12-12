@@ -5,8 +5,9 @@ import { useState, useEffect } from "react";
 import { FaSignInAlt } from "react-icons/fa";
 import axios from "axios";
 import { useGlobalContext } from "../context";
-import { Anchor, PasswordInput, Title, Container, createStyles, Text, Avatar, Group, TypographyStylesProvider, Paper, Textarea, TextInput,Button, Select, Modal, Card} from '@mantine/core';
+import { Anchor, PasswordInput, Title, Container, createStyles, Text, Avatar, Group, TypographyStylesProvider, Paper, Textarea, TextInput,Button, Select, Modal, Card, Alert} from '@mantine/core';
 import baseUrl from "../BaseUrl";
+
 
 const Register = () => {
   const { user, setUser, setFavourites } = useGlobalContext();
@@ -19,6 +20,9 @@ const Register = () => {
 
   const { name, email, password, password2 } = formData;
   const history= useHistory()
+  const [passwordError, setPasswordError]=useState(false)
+  const [regError, setRegError]=useState(false)
+  const [regErrorMsg, setRegErrorMsg]=useState("")
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -27,14 +31,17 @@ const Register = () => {
     }));
   };
 
+  useEffect(()=>{
+setPasswordError(false)
+setRegError(false)
+setRegErrorMsg("")
+  }, [formData])
+
   const onSubmit = (e) => {
     e.preventDefault();
     console.log("submit");
 
-    if (password != password2) {
-       
-      console.log("password fucked");
-    } else {
+    if (password == password2) {
       const userData = {
         name,
         email,
@@ -42,7 +49,24 @@ const Register = () => {
       };
       console.log(userData);
       register(userData);
+    } else {
+      console.log("password does not match"); 
+      setPasswordError(true)
+  
     }
+
+    // if (password != password2) {
+       
+    //   console.log("password fucked");
+    // } else {
+    //   const userData = {
+    //     name,
+    //     email,
+    //     password,
+    //   };
+    //   console.log(userData);
+    //   register(userData);
+    // }
   };
 
   //register new user
@@ -57,6 +81,8 @@ const Register = () => {
       })
       .catch(function (error) {
         console.log(error.response.data.message);
+        setRegError(true)
+        setRegErrorMsg(error.response.data.message)
       });
   };
 
@@ -121,7 +147,12 @@ const Register = () => {
           
         </form>
        
-      
+        {passwordError &&  <Alert title="Error!" color="red">
+      Passwords do not match!
+    </Alert>}
+    {regError &&  <Alert title="Error!" color="red">
+      {regErrorMsg}
+    </Alert>}
 </Card>
 </Container>
       {/* <section className="heading">
@@ -184,6 +215,7 @@ const Register = () => {
         </form>
        
       </section> */}
+      
     </>
   );
 };

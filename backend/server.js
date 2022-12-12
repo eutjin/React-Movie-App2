@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded(
     { extended:true }
 ))
 
-app.use('/api/goals', require('./routes/goalRoutes'))
+app.use('/api/goals', require('./routes/movieRoutes'))
 app.use('/api/users', require('./routes/userRoutes'))
 app.use('/api/comment', require('./routes/commentRoutes'))
 app.use('/api/list', require('./routes/listRoutes'))

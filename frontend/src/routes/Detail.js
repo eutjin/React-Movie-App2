@@ -10,7 +10,7 @@ function Detail(){
     const [movie, setMovie]= useState([]);
     const [isLoading, setIsLoading] =useState(true)
     const location=useLocation()
-    const {unit}=location.state
+    // const {unit}=location.state
     
     const getMovie= async ()=>{
         // const json = await(
@@ -30,7 +30,7 @@ function Detail(){
 
         useEffect(()=>{
             getMovie();
-            console.log(unit)
+            // console.log(unit)
         },[])
 
         console.log(movie);

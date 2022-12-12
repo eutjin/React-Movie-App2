@@ -130,7 +130,7 @@ function Movie({
             {/* <Link to={{pathname: `/movie/${id}`, state:{unit:"engineer"}, }} className={styles.photo}> */}
             <div className={styles.overlay}>
               <Link
-                to={{ pathname: `/movie/${id}`, state: { unit: "engineer" } }}
+                to={{ pathname: `/movie/${id}` }}
               >
                 <img src={imgSrc} className={styles.realimg} />
               </Link>
@@ -159,8 +159,7 @@ function Movie({
                   {/* <Link to={`/movie/${id}`} >{title}</Link> */}
                   <Link
                     to={{
-                      pathname: `/movie/${id}`,
-                      state: { unit: "engineer" },
+                      pathname: `/movie/${id}`
                     }}
                   >
                     {title}

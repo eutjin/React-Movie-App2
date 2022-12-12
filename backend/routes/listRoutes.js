@@ -13,12 +13,10 @@ const CustomList = require("../models/customListModel");
 
 //Create custom list
 router.post("/createList", (req, res) => {
-  // console.log(req.body);
   const listType = new ListType(req.body);
 
   listType.save((err, listtype) => {
     if (err) return res.json({ success: false, err });
-    // console.log(listtype._id);
 
     ListType.find({ _id: listtype._id })
       .populate("user")
@@ -72,19 +70,11 @@ router.post("/getAllList", (req, res) => {
 
 //add movie to custom list
 router.post("/addToList", (req, res) => {
-  // console.log("add to list",req.body)
 
   const customlist = new CustomList(req.body);
   customlist.save((err, list) => {
     if (err) return res.json({ success: false, err });
-    // console.log('addTolist22', list)
-    // return res.status(200).json({success: true, list})
 
-    // CustomList.find({user: req.body.user}).populate('user').populate('list').exec((err, result)=>{
-    //     if(err) return res.json({success: false, err})
-    //     return res.status(200).json({success: true, result})
-    //     console.log(result)
-    // })
     ListType.updateOne(
       { _id: req.body.list },
       { $push: { listContents: list._id } },

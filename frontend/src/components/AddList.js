@@ -90,20 +90,17 @@ function AddList({movieId, variable, }) {
 
     //add moviie to custom list
     const addtoList=async(listid)=>{
-      variable.list=listid //add more stuff to exisitng variable object
+      variable.list=listid //add more stuff to existing variable object
       variable.user=user._id
-      console.log(variable)
 
       const token= user.token
-      console.log(token)
       const config={
         headers:{
             Authorization: `Bearer ${token}`
         }   
     }
     const response= await axios.post(baseUrl+"/api/list/addToList", variable, config)
-    console.log(response.data)
-    // setList(response.data.result)
+
     return response.data
     }
 

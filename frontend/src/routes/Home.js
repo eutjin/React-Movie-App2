@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Movie from "../components/Movie";
 import { useGlobalContext } from "../context";
 import styles from "./home.module.css";
-import { AiOutlineLeft, AiOutlineRight, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineLeft, AiOutlineRight, AiOutlineSearch, AiFillCaretUp } from "react-icons/ai";
 import TopList from "../components/TopList";
 
 function Home() {
@@ -193,8 +193,8 @@ fetchMovie()
         <div className={styles.pagesetPrev} onClick={prevPage}>
           <AiOutlineLeft />
         </div>
-        <p className="">
-          {page}/{numPage} pages
+        <p className={styles.pagesetNumbers}>
+         <strong> {page}</strong> /{numPage}
         </p>
         <div className={styles.pagesetNext} onClick={nextPage}>
           <AiOutlineRight />
@@ -205,7 +205,7 @@ fetchMovie()
             window.scrollTo(0, 0);
           }}
         >
-          Back to Top
+         <AiFillCaretUp size={20}/><span> Back to Top</span>
         </div>
       </div>):(null)}
       

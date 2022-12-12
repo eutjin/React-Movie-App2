@@ -323,6 +323,11 @@ flex-wrap: wrap;
   width: 60%;
   padding: 0 10px;
 }
+.infoContainer p{
+  
+  width: 50%;
+  font-size: 0.8rem;
+}
 
 }
 
