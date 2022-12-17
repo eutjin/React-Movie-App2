@@ -342,3 +342,12 @@ color: #363636;
 
     
   }
+
+  @media (max-width: 400px){
+    .dummyContainer{
+      --containerWidth: 170px;
+      margin: 5px;
+    }
+
+    
+  }
