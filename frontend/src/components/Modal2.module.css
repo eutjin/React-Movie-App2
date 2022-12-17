@@ -12,7 +12,7 @@
   }
   
   .modalContainer {
-    width: 30%;
+    min-width: 50%;
     height: 200px;
     border-radius: 12px;
     background-color: white;
@@ -50,7 +50,7 @@
   
   .form{
       height: 2.5rem;
-      width: 80%;
+      width: 90%;
       font-size: 1.1rem;
       box-sizing: border-box;
   }
@@ -70,8 +70,8 @@
 
   .closebtn {
       position: absolute;
-      top: 5px;
-      right: 9px;
+      top: 10px;
+      right: 20px;
       
   }
 

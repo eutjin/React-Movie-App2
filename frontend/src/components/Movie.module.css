@@ -276,6 +276,21 @@
       }
     }
 
+    @media (max-width: 400px){
+      .container{
+        --containerWidth: 170px;
+        width: var(--containerWidth);
+        margin: 5px;
+      }
+
+      .box {
+       
+        font-size: 0.7rem;
+        
+      
+      }
+    }
+
     /* @media (max-width: 420px){
       .container{
         width: 150vw;
