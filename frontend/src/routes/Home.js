@@ -25,16 +25,16 @@ function Home() {
   //     });
   // }, [genre]);
   const genre_list = [
-    "comedy",
-    "sci-fi",
-    "horror",
-    "romance",
-    "action",
-    "thriller",
-    "drama",
-    "mystery",
-    "crime",
-    "animation",
+    "Comedy",
+    "Sci-Fi",
+    "Horror",
+    "Romance",
+    "Action",
+    "Thriller",
+    "Drama",
+    "Mystery",
+    "Crime",
+    "Animation",
   ];
 
   const {
@@ -121,15 +121,15 @@ fetchMovie()
                 onChange={onChangeRating}
               >
                 <option value="0">All Ratings</option>
-                <option value="9">9</option>
-                <option value="8">8</option>
-                <option value="7">7</option>
-                <option value="6">6</option>
-                <option value="5">5</option>
-                <option value="4">4</option>
-                <option value="3">3</option>
-                <option value="2">2</option>
-                <option value="1">1</option>
+                <option value="9">&gt; 9</option>
+                <option value="8">&gt; 8</option>
+                <option value="7">&gt; 7</option>
+                <option value="6">&gt; 6</option>
+                <option value="5">&gt; 5</option>
+                <option value="4">&gt; 4</option>
+                <option value="3">&gt; 3</option>
+                <option value="2">&gt; 2</option>
+                <option value="1">&gt;  1</option>
               </select>
             </div>
 
@@ -137,7 +137,7 @@ fetchMovie()
               <form>
                 <input
                   type="text"
-                  placeholder="search"
+                  placeholder="Search"
                   value={query}
                   className={styles.formsize}
                   onChange={(e) => {

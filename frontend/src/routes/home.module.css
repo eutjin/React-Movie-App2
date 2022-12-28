@@ -150,6 +150,7 @@ margin: 0 auto;
 
 
 select {
+    appearance: none;
     border: none;
     font-size: 0.9rem;
     font-family: "poppins";
@@ -157,6 +158,14 @@ select {
     width: 100%;
     
     
+}
+input, form {
+    appearance: none;
+  
+}
+
+option:first-of-type{
+    font-weight: 600;
 }
 .formbar{
     /* margin: 10px 10px; */
