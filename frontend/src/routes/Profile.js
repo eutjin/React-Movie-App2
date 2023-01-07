@@ -25,6 +25,17 @@ import {
 } from "@mantine/core";
 import axios from "axios";
 import CreateCustomList from "../components/CreateCustomList";
+import {
+  AiOutlineLeft,
+  AiOutlineRight,
+  AiOutlineSearch,
+  AiFillRightCircle,
+  AiFillEdit,
+  AiFillDelete,
+  AiOutlineDown,
+  AiOutlineUp,
+  AiFillCaretDown,
+} from "react-icons/ai";
 
 const Profile = () => {
   const { favourites, user, listTitles, list, getAllList, getCustomList, getProfile} =
@@ -65,7 +76,38 @@ const Profile = () => {
     menu2:{
       backgroundColor: "green",
       color: "green",
-    }
+    },
+    listCopy:{
+      backgroundColor: "#FFAE42",
+      border: "none",
+      height: "1.9rem",
+      padding: "0 30px",
+      color: "white",
+     
+      borderRadius: "5px",
+
+      display: "flex",
+      alignItems: "center",
+      "&:hover":{
+        backgroundColor: "#ffb95c",
+      }
+    },
+    followButton:{
+      backgroundColor: "#FFAE42",
+      border: "none",
+      height: "2.2rem",
+      padding: "0 30px",
+      color: "white",
+     fontSize:"1rem",
+      borderRadius: "5px",
+
+      display: "flex",
+      alignItems: "center",
+      justifyContent:"center",
+      "&:hover":{
+        backgroundColor: "#ffb95c",
+      }
+    },
   }));
   const { classes } = useStyles();
 
@@ -191,13 +233,80 @@ const Profile = () => {
       });
   };
 
+  const handleLeftButton2 = (index) => {
+    var width = Math.max(window.innerWidth);
+    console.log("width", width);
+    let size;
+    if (width < 488) {
+      size = 190;
+    } else {
+      size = 235;
+    }
 
+    const e = document.getElementById(index);
+    console.log("scrollGET", e, e.scrollLeft);
+    let val1 = Math.floor(e.getBoundingClientRect().width / size);
+    console.log("val1", val1);
+
+    let scroll1 = size * val1;
+    console.log("scroll1", scroll1);
+
+    let val2 = (e.getBoundingClientRect().width - size * val1) / 2;
+    console.log("val2", val2);
+
+    let scroll2 = scroll1 - val2;
+    console.log("scroll2", scroll2);
+
+    let endScroll = favourites.length * size - e.getBoundingClientRect().width;
+    console.log("endScroll", endScroll);
+
+    if (endScroll - e.scrollLeft < 10) {
+      e.scrollLeft -= scroll2;
+    } else {
+      e.scrollLeft -= scroll1;
+    }
+  };
+
+  const handleRightButton2 = (index) => {
+    var width = Math.max(window.innerWidth);
+    console.log("width", width, index);
+    let size;
+    if (width < 488) {
+      size = 190;
+    } else {
+      size = 235;
+    }
+
+    const e = document.getElementById(index);
+
+    console.log("scrollGET", e);
+    let val1 = Math.floor(e.getBoundingClientRect().width / size);
+    console.log("val1", val1);
+
+    let scroll1 = size * val1;
+    console.log("scroll1", scroll1);
+
+    let val2 = (e.getBoundingClientRect().width - size * val1) / 2;
+    console.log("val2", val2);
+
+    let scroll2 = scroll1 - val2;
+    console.log("scroll2", scroll2);
+
+    let endScroll = favourites.length * size - e.getBoundingClientRect().width;
+    console.log("endScroll", endScroll);
+
+    if (e.scrollLeft == 0) {
+      e.scrollLeft += scroll2;
+    } else {
+      e.scrollLeft += scroll1;
+    }
+  };
   
   return (
     <>
       <Card my="md" p="lg" className={classes.card}>
-        <Grid grow gutter={40}>
-          <Grid.Col span={2}>
+        <Grid grow gutter={40} px="md">
+          <Grid.Col span={2} px="md">
             <Center>
               <Avatar
                 src={profile.avatar}
@@ -207,7 +316,7 @@ const Profile = () => {
               ></Avatar>
             </Center>
             {profile.user? 
-            ( <Button onClick={handleFollowUser} fullWidth>
+            ( <Button color="yellow"onClick={handleFollowUser} fullWidth className={classes.followButton}>
               {profile.followers.some((item)=>(item._id==user._id))? "Unfollow": "Follow"}
             </Button>): null
           }
@@ -231,8 +340,8 @@ const Profile = () => {
                   trigger="hover"
                   control={
                     <div>
-                      <Text size="sm">Followers:</Text>
-                      <Text weight={500} size="lg" style={{lineHeight: 1}}>
+                      <Text size="sm" style={{cursor:'pointer'}}>Followers:</Text>
+                      <Text weight={500} size="lg" style={{lineHeight: 1, cursor:'pointer'}}>
                         {" "}
                         {profile.followers ? profile.followers.length : 0}{" "}
                         person
@@ -247,7 +356,7 @@ const Profile = () => {
                           to={`/profile/${item._id}`}
                         >
                           <Menu.Item 
-                            className={classes.menu2}
+                            className={classes.followers}
                             variant="unstyled"
                             p={5}
                           >
@@ -272,8 +381,8 @@ const Profile = () => {
                   trigger="hover"
                   control={
                     <div>
-                      <Text size="sm">Following:</Text>
-                      <Text weight={500} size="lg" style={{lineHeight: 1}}>
+                      <Text size="sm" style={{cursor:'pointer'}}>Following:</Text>
+                      <Text weight={500} size="lg" style={{lineHeight: 1, cursor:'pointer'}}>
                         {profile.following ? profile.following.length : 0}{" "}
                         person
                       </Text>
@@ -311,9 +420,9 @@ const Profile = () => {
         {/* {console.log(profile.followers[0].name)} */}
       </Card>
 
-      {listTitles2.map((title) => (
+      {listTitles2.map((title,index) => (
         <Card my="md" p="xs" className={classes.card}>
-          <Group>
+          <Group position="apart">
             <div className={classes.content}>
               <Title order={2}>{title.listTitle}</Title>
               <Text size="xs" color="white">
@@ -321,9 +430,10 @@ const Profile = () => {
                 movies in "{title.listTitle} list
               </Text>
             </div>
+            <Button mr="xs"color="yellow" onClick={() => copyList(title._id)} className={classes.listCopy}>Copy list</Button>
             {/* <Button onClick={()=>handleDelCustomList(title._id)}>delete</Button> */}
           </Group>
-          <div className={styles.grid}>
+          {/* <div className={styles.grid}>
             {list2
               .filter((list) => list.list._id == title._id)
               .map((list) => (
@@ -339,8 +449,47 @@ const Profile = () => {
                   runtime={list.runtime}
                 />
               ))}
-          </div>
-          <Button onClick={() => copyList(title._id)}>Copy list</Button>
+          </div> */}
+
+        
+                  <div className={styles.sliderContainer}>
+                    <button
+                      className={styles.sliderButtonLeft}
+                      onClick={() => handleLeftButton2(index)}
+                    >
+                      <AiOutlineLeft size={18} />
+                    </button>
+
+                    <div id={index} className={styles.gridScroll}>
+                      {list2
+                        .filter((list) => list.list._id == title._id)
+                        .map((list) => (
+                          <Movie
+                            key={list.id}
+                            id={list.id}
+                            rating={list.rating}
+                            imgSrc={list.imgSrc}
+                            title={list.title}
+                            summary={list.summary}
+                            genres={list.genres}
+                            movie={list}
+                            runtime={list.runtime}
+                          />
+                        ))}
+                    </div>
+
+                    <button
+                      className={styles.sliderButtonRight}
+                      onClick={() => handleRightButton2(index)}
+                    >
+                      <AiOutlineRight size={18} />
+                    </button>
+                  </div>
+                
+                  
+
+
+          {/* <Button onClick={() => copyList(title._id)}>Copy list</Button> */}
         </Card>
       ))}
     </>

@@ -395,9 +395,9 @@ const handleHover = () => {
 //profile card experiment
 const profileCard = (
   <>
-    <div>
+    <div >
       {comment.writer.profile.avatar ? (
-        <Avatar size={120} radius={100} my="auto" color="indigo">
+        <Avatar size={120} radius={100} mx="auto" color="indigo">
           {" "}
           <Image height={120} src={comment.writer.profile.avatar} />
         </Avatar>
@@ -409,7 +409,7 @@ const profileCard = (
       </Text>
     </div>
 
-<div className={classes.menuBorder}></div>
+      <div className={classes.menuBorder}></div>
 
     <Group mt="md" position="center" spacing={30}>
       <div>
@@ -472,7 +472,7 @@ const profileCard = (
           <div className={classes.containerRight}>
             <Group position="apart"  >
               <Group >
-              <Menu withArrow
+              <Menu p="md" withArrow
                 position="bottom"
                 placement="center"
                 delay={300}
