@@ -15,7 +15,10 @@
 .container{
     background: #2c2c2c;
     height: 50px;
-    
+   position: fixed;
+   width: 100%;
+   top:0;
+   z-index: 100;
 }
 .navbar {
     display: flex;

@@ -381,7 +381,7 @@ const List = () => {
     <section className={styles.contents}>
       {user._id ? (
         <>
-          <Card my="md" p="xs" className={classes.card}>
+          <Card mb="md" p="xs" className={classes.card}>
             <Group>
               <div className={styles.listTitleGroup}>
                 <Title order={2} weight={100} color="#FFAE42">

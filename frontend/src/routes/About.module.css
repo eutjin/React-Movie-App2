@@ -3,6 +3,7 @@
   display: block;
 margin-left: auto;
 margin-right: auto;
+margin-top: 66px;
 }
 
 .link a {
@@ -61,8 +62,9 @@ input[type="submit"] {
 
 .cardMain{
   display: flex;
-  padding: 5px;
+  
 justify-content: center;
+
 
 }
 

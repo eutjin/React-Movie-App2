@@ -5,6 +5,7 @@ html {
   }
 .header{
 background: black;
+margin-top: 50px;
 }
 .genre{
     color: white;
@@ -19,6 +20,7 @@ background: linear-gradient(140deg, rgba(0,0,0,1) 7%, rgba(61,54,54,1) 37%, rgba
     margin-left: auto;
     margin-right: auto;
     /* height: 250px; */
+    
 }
 
 *{
