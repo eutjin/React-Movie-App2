@@ -126,7 +126,7 @@ voteButton:{
       // },
     },
     containerLeft:{
-      width: "8%",
+      width: "8%", marginRight: "5px"
       // [`@media (max-width: 420px)`]: {
       //   width: "12%",
         
@@ -145,6 +145,22 @@ voteButton:{
       //   lineHeight: "2.5rem",
         
       // },
+    },
+    followButton:{
+      backgroundColor: "#FFAE42",
+    //   border: "none",
+    //   height: "2.2rem",
+    //   padding: "0 30px",
+    //   color: "white",
+    //  fontSize:"1rem",
+    //   borderRadius: "5px",
+
+    //   display: "flex",
+    //   alignItems: "center",
+    //   justifyContent:"center",
+      "&:hover":{
+        backgroundColor: "#ffb95c",
+      }
     },
   }));
   const { classes } = useStyles();
@@ -397,7 +413,7 @@ const profileCard = (
   <>
     <div >
       {comment.writer.profile.avatar ? (
-        <Avatar size={120} radius={100} mx="auto" color="indigo">
+        <Avatar size={120} radius={100} mx="auto" mt="sm" color="indigo">
           {" "}
           <Image height={120} src={comment.writer.profile.avatar} />
         </Avatar>
@@ -430,8 +446,9 @@ const profileCard = (
       </div>
     </Group>
 
-    <Link to={`/profile/${comment.writer._id}`}>
-      <Button fullWidth radius="md" mt="md" size="md">
+
+    <Link to={`/profile/${comment.writer._id}`} >
+      <Button fullWidth radius="sm" mt="md" mb="sm" size="md" className={classes.followButton} >
         View Profile
       </Button>
     </Link>
@@ -472,16 +489,16 @@ const profileCard = (
           <div className={classes.containerRight}>
             <Group position="apart"  >
               <Group >
-              <Menu p="md" withArrow
+              <Menu withArrow
                 position="bottom"
                 placement="center"
                 delay={300}
                 trigger="hover"
                 control={
                   // <Group>
-                    <div >
+                    <div>
                       {comment.writer.profile.avatar ? (
-                        <Avatar size={40} radius={100} color="indigo">
+                        <Avatar size={40} radius={100} color="indigo"  style={{padding: 0}}>
                           {" "}
                           <Image
                             height={40}

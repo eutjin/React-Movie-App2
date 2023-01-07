@@ -27,6 +27,24 @@ function Comments({movieId, updateComment, commentList, updateAfterDelete, getAl
         backgroundColor: 'white',
         color: 'black',
 
+        "&:hover": {
+          backgroundColor: "#3c3c3c",
+          color: "white",
+        },
+
+        [`@media (max-width: 420px)`]: {
+          width: "calc(100% - 20px)",
+        },
+      },
+      button2:{
+        backgroundColor: 'white',
+        color: 'white',
+
+        "&:hover": {
+          backgroundColor: "#3c3c3c",
+          color: "white",
+        },
+
         [`@media (max-width: 420px)`]: {
           width: "calc(100% - 20px)",
         },
@@ -104,7 +122,7 @@ useEffect(()=> {
       <Button className={classes.button} onClick={() => setAddComment(true)} mx={10} my={20} color="gray">Review Movie</Button>
       : 
       <Tooltip label="Login to start writing reviews" withArrow arrowSize={5}>
-      <Button className={classes.button} onClick={() => setAddComment(true)} mx={10} my={20} color="gray" disabled>Review Movie</Button>
+      <Button  className={classes.button2} onClick={() => setAddComment(true)} mx={10} my={20} color="white" disabled>Review Movie</Button>
       </Tooltip>
     }
 

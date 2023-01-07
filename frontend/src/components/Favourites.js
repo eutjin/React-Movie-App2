@@ -108,7 +108,7 @@ function Favourites({ movieId, variable }) {
                 ? favourites.some((fav) => fav.id == variable.id)
                   ? "remove from Watchlist"
                   : "add to Watchlist"
-                : "please login"}
+                : "Please login first"}
             </span>
           </button>
         </div>
