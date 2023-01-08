@@ -5,7 +5,7 @@ import React, {
   forwardRef,
   useState,
 } from "react";
-import { Link } from "react-router-dom";
+import { Link , useHistory} from "react-router-dom";
 import {
   Avatar,
   ActionIcon,
@@ -60,6 +60,7 @@ const About = () => {
     user: user._id,
   });
   const [gender, setGender] = useState("");
+  const history = useHistory();
 
   const handleChange = (event) => {
     const value = event.target.value;
@@ -70,6 +71,11 @@ const About = () => {
 
   useEffect(()=>{
     getProfile();
+    if(!user._id){
+      console.log("yes user")
+      history.push("/login");//navigate
+    }
+    
     }, [])
 
   useEffect(() => {

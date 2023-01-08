@@ -89,7 +89,7 @@ setRegErrorMsg("")
   return (
     <>
      
-     <Container size={400} my={20}>
+     <Container size={400} my={20} style={{marginTop: "65px"}}>
      <Card>
       
         <Title align="center" order={2}>Welcome!</Title>
@@ -99,7 +99,7 @@ setRegErrorMsg("")
           
             <TextInput my={10}
               type="text"
-              label= "Your name"
+              label= "Name"
               id="name"
               name="name"
               placeholder="enter your name"
@@ -109,7 +109,7 @@ setRegErrorMsg("")
          
             <TextInput my={10}
               type="email"
-              label= "Your Email"
+              label= "E-mail"
               id="email"
               name="email"
               placeholder="enter your email"
@@ -129,7 +129,7 @@ setRegErrorMsg("")
          
             <PasswordInput my={10}
               
-              label="Confirm password"
+              label="Reenter Password"
               id="password2"
               name="password2"
               placeholder="confirm password"

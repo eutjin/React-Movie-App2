@@ -19,6 +19,7 @@
    width: 100%;
    top:0;
    z-index: 100;
+   
 }
 .navbar {
     display: flex;
@@ -93,7 +94,7 @@
 .logo{
     display: flex;
     align-items: center;
-    
+    margin-left: 0.5rem;
 }
 
 .menuLogoContainer{
@@ -101,7 +102,7 @@
     display: flex;
     align-items: center;
     display: none;
-    margin-right: 0.5rem;
+    margin-right: 1rem;
 }
 .menuLogo{
     font-size: 2rem;

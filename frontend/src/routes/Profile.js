@@ -53,6 +53,7 @@ const Profile = () => {
       marginLeft: "auto",
       marginRight: "auto",
       color: "white",
+      marginTop: 50,
     },
     content: {
       color: "#FFAE42",
@@ -304,7 +305,7 @@ const Profile = () => {
   
   return (
     <>
-      <Card my="md" p="lg" className={classes.card}>
+      <Card my="md" p="lg" style={{marginTop: "65px"}} className={classes.card}>
         <Grid grow gutter={40} px="md">
           <Grid.Col span={2} px="md">
             <Center>
