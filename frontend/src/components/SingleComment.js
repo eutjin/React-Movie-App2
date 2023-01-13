@@ -1,9 +1,11 @@
-import React, { useEffect, useState, useRef} from "react";
-import {Link, useLocation} from "react-router-dom";
-import moment from 'moment';
+import React, { useEffect, useState, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
+import moment from "moment";
 
 import {
-  Card, Image, Menu, 
+  Card,
+  Image,
+  Menu,
   createStyles,
   Text,
   Avatar,
@@ -16,7 +18,8 @@ import {
   ActionIcon,
   Modal,
   TextInput,
-  Select, Popover,
+  Select,
+  Popover,  Tooltip
 } from "@mantine/core";
 import { useGlobalContext } from "../context";
 import axios from "axios";
@@ -36,7 +39,8 @@ function SingleComment({
   updateComment,
   updateAfterDelete,
   getAllComments,
-  commentList, title
+  commentList,
+  title,
 }) {
   const { user } = useGlobalContext();
 
@@ -47,9 +51,9 @@ function SingleComment({
 
   const [upAction, setUpAction] = useState(false);
   const [downAction, setDownAction] = useState(false);
-  const [upvotes, setUpvotes] = useState(0)
-  const [downvotes, setDownvotes] = useState(0)
-  const [userCard, setUserCard]= useState(false)
+  const [upvotes, setUpvotes] = useState(0);
+  const [downvotes, setDownvotes] = useState(0);
+  const [userCard, setUserCard] = useState(false);
 
   const useStyles = createStyles((theme) => ({
     container: {
@@ -59,108 +63,103 @@ function SingleComment({
       border: "2px solid white",
       color: "white",
 
-      '&:hover':{
+      "&:hover": {
         border: "2px solid orange",
       },
 
       [`@media (max-width: 420px)`]: {
         margin: "10px 0",
-        
       },
     },
     // menuBorder:{
     //   border: "solid white",
     // },
-voteSection:{
-display: "flex",
-},
-    user:{
-      color:"white",
+    voteSection: {
+      display: "flex",
+    },
+    user: {
+      color: "white",
       display: "flex",
       flexDirection: "column",
-      '&:hover':{
+      "&:hover": {
         color: "orange",
       },
     },
-content:{
-  whiteSpace: "pre-wrap",
-  // margin: "0 5px",
+    content: {
+      whiteSpace: "pre-wrap",
+      // margin: "0 5px",
 
-  [`@media (max-width: 420px)`]: {
-    fontSize: '1rem',
-   
-  },
-},
-voteValue:{
-  margin: "0 10px",
-   [`@media (max-width: 420px)`]: {
-    fontSize: '12px',
-   
-  },
-},
-voteButton:{
-  [`@media (max-width: 420px)`]: {
-    fontSize: '12px',
-    // width: "0.5rem",
-    height: "20px",
-    minHeight: "20px",
-    width: "20px",
-    minWidth: "20px",
-    
-   
-  },
-},
-    
-    left:{
+      [`@media (max-width: 420px)`]: {
+        fontSize: "1rem",
+      },
+    },
+    voteValue: {
+      margin: "0 10px",
+      [`@media (max-width: 420px)`]: {
+        fontSize: "12px",
+      },
+    },
+    voteButton: {
+      [`@media (max-width: 420px)`]: {
+        fontSize: "12px",
+        // width: "0.5rem",
+        height: "20px",
+        minHeight: "20px",
+        width: "20px",
+        minWidth: "20px",
+      },
+    },
+
+    left: {
       // backgroundColor: "gray",
     },
-    commentButton:{
-      fontSize:"10rem",
+    commentButton: {
+      fontSize: "10rem",
     },
-    commentText:{
+    commentText: {
       fontSize: "10rem",
 
       // [`@media (max-width: 420px)`]: {
       //   fontSize: '50rem',
-        
+
       // },
     },
-    containerLeft:{
-      width: "8%", marginRight: "5px"
+    containerLeft: {
+      width: "8%",
+      marginRight: "5px",
       // [`@media (max-width: 420px)`]: {
       //   width: "12%",
-        
+
       // },
     },
-    containerRight:{
+    containerRight: {
       width: "85%",
       // [`@media (max-width: 420px)`]: {
       //   width: "80%",
-        
+
       // },
     },
-    commentBody:{
+    commentBody: {
       // [`@media (max-width: 420px)`]: {
       //   fontSize: "2rem",
       //   lineHeight: "2.5rem",
-        
       // },
     },
-    followButton:{
+    followButton: {
       backgroundColor: "#FFAE42",
-    //   border: "none",
-    //   height: "2.2rem",
-    //   padding: "0 30px",
-    //   color: "white",
-    //  fontSize:"1rem",
-    //   borderRadius: "5px",
+      //   border: "none",
+      //   height: "2.2rem",
+      //   padding: "0 30px",
+      //   color: "white",
+      //  fontSize:"1rem",
+      //   borderRadius: "5px",
 
-    //   display: "flex",
-    //   alignItems: "center",
-    //   justifyContent:"center",
-      "&:hover":{
+      //   display: "flex",
+      //   alignItems: "center",
+      //   justifyContent:"center",
+      "&:hover": {
         backgroundColor: "#ffb95c",
-      }
+      },
     },
   }));
   const { classes } = useStyles();
@@ -191,52 +190,56 @@ voteButton:{
   //   return response.data;
   // };
 
-//   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-//     anchor.addEventListener('click', function (e) {
-//         e.preventDefault();
+  //   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  //     anchor.addEventListener('click', function (e) {
+  //         e.preventDefault();
 
-//         document.querySelector(this.getAttribute('href')).scrollIntoView({
-//             behavior: 'smooth'
-//         });
-//     });
-// });
-  const location = useLocation()
-  console.log("location", location)
-  useEffect(()=> {
-    console.log('bad2')
+  //         document.querySelector(this.getAttribute('href')).scrollIntoView({
+  //             behavior: 'smooth'
+  //         });
+  //     });
+  // });
+  const location = useLocation();
+  console.log("location", location);
+  useEffect(() => {
+    console.log("bad2");
     if (location.hash) {
-        let elem = document.getElementById(location.hash.slice(1))
-        if (elem) {
-            elem.scrollIntoView({behavior: "smooth"})
-        }
+      let elem = document.getElementById(location.hash.slice(1));
+      if (elem) {
+        elem.scrollIntoView({ behavior: "smooth" });
+      }
     } else {
-    window.scrollTo({top:0,left:0, behavior: "smooth"})
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     }
-  }, [])
+  }, []);
 
-  const deleteComment= async (comment) =>{
+  const deleteComment = async (comment) => {
     const token = user.token;
-    const commentId= comment._id;
-    const config={
-      headers:{
+    const commentId = comment._id;
+    const config = {
+      headers: {
         Authorization: `Bearer ${token}`,
       },
     };
 
-    const data={
+    const data = {
       active: false,
       userId: user._id,
-    commentId: comment._id,
-    postId: postId,
-    movieTitle: comment.movieTitle,
-    }
+      commentId: comment._id,
+      postId: postId,
+      movieTitle: comment.movieTitle,
+    };
 
-    const response= await axios.put(baseUrl+"/api/comment/deleteComment/" + commentId, data, config);
+    const response = await axios.put(
+      baseUrl + "/api/comment/deleteComment/" + commentId,
+      data,
+      config
+    );
 
-    console.log(response.data)
+    console.log(response.data);
     getAllComments();
     return response.data;
-  }
+  };
 
   const handleEdit = () => {
     setIsEditing(!isEditing);
@@ -263,10 +266,12 @@ voteButton:{
 
     const data = {
       content: editContent,
+      title: editTitle,
+      rating: editRating
     };
 
     const response = await axios.put(
-      baseUrl+"/api/comment/editComment/" + commentId,
+      baseUrl + "/api/comment/editComment/" + commentId,
       data,
       config
     );
@@ -276,185 +281,196 @@ voteButton:{
     return response.data;
   };
 
-//like dislke functions
+  //like dislke functions
 
-useEffect(()=>{
-  const variable={
-    
-    commentId: comment._id
+  useEffect(() => {
+    const variable = {
+      commentId: comment._id,
+    };
+    //get all upvotes
+    axios.post(baseUrl + "/api/vote/getUpvotes/", variable).then((response) => {
+      if (response.data.success) {
+        console.log("upvotes", response.data.result);
+        setUpvotes(response.data.result.length);
+        response.data.result.map((upvote) => {
+          if (upvote.userId._id == user._id) {
+            setUpAction(true);
+            console.log("upaction");
+          }
+        });
+      } else {
+        alert("get failed");
+      }
+    });
 
-  }
-  //get all upvotes
-  axios.post(baseUrl+"/api/vote/getUpvotes/", variable).then(response=>{
-    if(response.data.success){
-      console.log("upvotes",response.data.result)
-      setUpvotes(response.data.result.length)
-      response.data.result.map(upvote=>{
-        if(upvote.userId._id==user._id){
-          setUpAction(true)
-          console.log("upaction")
+    //get all DOWNVOTES
+    axios
+      .post(baseUrl + "/api/vote/getDownvotes/", variable)
+      .then((response) => {
+        if (response.data.success) {
+          console.log(response.data);
+          setDownvotes(response.data.result.length);
+          response.data.result.map((downvote) => {
+            if (downvote.userId._id == user._id) {
+              setDownAction(true);
+            }
+          });
+        } else {
+          alert("get failed");
         }
-      })
-    }else{
-      alert("get failed")
-    }
-  })
+      });
+  }, []);
 
-  //get all DOWNVOTES
-  axios.post(baseUrl+"/api/vote/getDownvotes/", variable).then(response=>{
-    if(response.data.success){
-      console.log(response.data)
-      setDownvotes(response.data.result.length)
-      response.data.result.map(downvote=>{
-        if(downvote.userId._id==user._id){
-          setDownAction(true)
-        }
-      })
-    }else{
-      alert("get failed")
-    }
-  })
+  //upvote
+  const onUp = async (comment) => {
 
-}, [])
+    if(user._id){
+    const variable = {
+      userId: user._id,
+      commentId: comment._id,
+      postId: postId,
+      movieTitle: comment.movieTitle,
+    };
 
+    console.log(variable);
+    //if not upvoted yet
+    if (!upAction) {
+      const response = await axios.post(
+        baseUrl + "/api/vote/upvote/",
+        variable
+      );
 
-//upvote 
-const onUp= async(comment)=>{
-
-  const variable={
-    userId: user._id,
-    commentId: comment._id,
-    postId: postId,
-    movieTitle: comment.movieTitle,
-  }
-
-  console.log(variable)
-  //if not upvoted yet
-  if (!upAction){
-
-    const response= await axios.post(baseUrl+"/api/vote/upvote/", variable)
-
-      if(response.data.success){
-        console.log(response.data)
-        setUpAction(true)
-        setUpvotes(upvotes+1)
-        if(downAction==true){
-          setDownAction(false)
-          setDownvotes(downvotes-1)
+      if (response.data.success) {
+        console.log(response.data);
+        setUpAction(true);
+        setUpvotes(upvotes + 1);
+        if (downAction == true) {
+          setDownAction(false);
+          setDownvotes(downvotes - 1);
         }
         //another thing
-      }else{
-        console.log("vote failed")
+      } else {
+        console.log("vote failed");
         //
       }
     }
 
     //if akready upvoted but clicked once more
-  else{
-    const response= await axios.post(baseUrl+"/api/vote/undoUpvote/", variable)
-    if(response.data.success){
-      setUpAction(false)
-      setUpvotes(upvotes-1)
-    }
-  }
+    else {
+      const response = await axios.post(
+        baseUrl + "/api/vote/undoUpvote/",
+        variable
+      );
+      if (response.data.success) {
+        setUpAction(false);
+        setUpvotes(upvotes - 1);
+      }
+    }}
+  };
 
-}
+  //DOWNVOTE
+  const onDown = async (comment) => {
+    if(user._id){
+    const variable = {
+      userId: user._id,
+      commentId: comment._id,
+      postId: postId,
+      movieTitle: comment.movieTitle,
+    };
 
-//DOWNVOTE
-const onDown= async(comment)=>{
+    console.log("varable", variable);
+    //if not downvoted yet
+    if (!downAction) {
+      const response = await axios.post(
+        baseUrl + "/api/vote/downvote/",
+        variable
+      );
 
-  const variable={
-    userId: user._id,
-    commentId: comment._id,
-    postId: postId,
-    movieTitle: comment.movieTitle,
-    
-  }
-
-  console.log('varable', variable)
-  //if not downvoted yet
-  if (!downAction){
-
-    const response= await axios.post(baseUrl+"/api/vote/downvote/", variable)
-
-      if(response.data.success){
-        console.log(response.data)
-        setDownAction(true)
-        setDownvotes(downvotes+1)
+      if (response.data.success) {
+        console.log(response.data);
+        setDownAction(true);
+        setDownvotes(downvotes + 1);
 
         //another thing(if upvote , minus it)
-        if(upAction==true){
-          setUpAction(false)
-          setUpvotes(upvotes-1)
+        if (upAction == true) {
+          setUpAction(false);
+          setUpvotes(upvotes - 1);
         }
-      }else{
-        console.log("vote failed")
+      } else {
+        console.log("vote failed");
         //
       }
     }
 
     //if akready downvoted but clicked once more
-  else{
-    const response= await axios.post(baseUrl+"/api/vote/undoDownvote/", variable)
-    if(response.data.success){
-      setDownAction(false)
-      setDownvotes(downvotes-1)
-    }
-  }
+    else {
+      const response = await axios.post(
+        baseUrl + "/api/vote/undoDownvote/",
+        variable
+      );
+      if (response.data.success) {
+        setDownAction(false);
+        setDownvotes(downvotes - 1);
+      }
+    }}
+  };
 
-}
+  const handleHover = () => {
+    console.log("mouse over");
+  };
 
-const handleHover = () => {
-  console.log("mouse over");
-}
-
-//profile card experiment
-const profileCard = (
-  <>
-    <div >
-      {comment.writer.profile.avatar ? (
-        <Avatar size={120} radius={100} mx="auto" mt="sm" color="indigo">
-          {" "}
-          <Image height={120} src={comment.writer.profile.avatar} />
-        </Avatar>
-      ) : (
-        <Avatar radius="xl" color="indigo" />
-      )}
-      <Text align="center" size="lg" weight={500}>
-        {comment.writer.name}
-      </Text>
-    </div>
+  //profile card experiment
+  const profileCard = (
+    <>
+      <div>
+        {comment.writer.profile.avatar ? (
+          <Avatar size={120} radius={100} mx="auto" mt="sm" color="indigo">
+            {" "}
+            <Image height={120} src={comment.writer.profile.avatar} />
+          </Avatar>
+        ) : (
+          <Avatar radius="xl" color="indigo" />
+        )}
+        <Text align="center" size="lg" weight={500}>
+          {comment.writer.name}
+        </Text>
+      </div>
 
       <div className={classes.menuBorder}></div>
 
-    <Group mt="md" position="center" spacing={30}>
-      <div>
-        <Text align="center" size="lg" weight={500}>
-          {comment.writer.profile.followers.length}
-        </Text>
-        <Text align="center" size="sm" color="dimmed">
-          Followers
-        </Text>
-      </div>
-      <div>
-        <Text align="center" size="lg" weight={500}>
-        {comment.writer.profile.following.length}
-        </Text>
-        <Text align="center" size="sm" color="dimmed">
-          Following
-        </Text>
-      </div>
-    </Group>
+      <Group mt="md" position="center" spacing={30}>
+        <div>
+          <Text align="center" size="lg" weight={500}>
+            {comment.writer.profile.followers.length}
+          </Text>
+          <Text align="center" size="sm" color="dimmed">
+            Followers
+          </Text>
+        </div>
+        <div>
+          <Text align="center" size="lg" weight={500}>
+            {comment.writer.profile.following.length}
+          </Text>
+          <Text align="center" size="sm" color="dimmed">
+            Following
+          </Text>
+        </div>
+      </Group>
 
-
-    <Link to={`/profile/${comment.writer._id}`} >
-      <Button fullWidth radius="sm" mt="md" mb="sm" size="md" className={classes.followButton} >
-        View Profile
-      </Button>
-    </Link>
-  </>
-);
-
+      <Link to={`/profile/${comment.writer._id}`}>
+        <Button
+          fullWidth
+          radius="sm"
+          mt="md"
+          mb="sm"
+          size="md"
+          className={classes.followButton}
+        >
+          View Profile
+        </Button>
+      </Link>
+    </>
+  );
 
   return (
     <>
@@ -463,42 +479,55 @@ const profileCard = (
       <Card p="xs" radius="md" className={classes.container} id={comment._id}>
         <Group>
           {/* UPVOTE DOWNVOTE */}
+          
           <Card.Section className={classes.containerLeft}>
-            <div className={classes.voteSection}>
+          
+            <div className={classes.voteSection}><Tooltip label={user._id? ("Upvote"):("Login to Upvote")} withArrow arrowSize={5} position="right">
               <ActionIcon
                 color="yellow"
                 variant={upAction ? "filled" : "outline"}
-                onClick={() => onUp(comment)} className={classes.voteButton}
+                onClick={() => onUp(comment)}
+                className={classes.voteButton}
               >
-                <AiOutlineUp/>
-              </ActionIcon>
+                <AiOutlineUp />
+              </ActionIcon></Tooltip>
               <Text className={classes.voteValue}>{upvotes}</Text>
-              </div>
+            </div>
+            
 
-              <div className={classes.voteSection}>
+            
+            <div className={classes.voteSection}><Tooltip label={user._id? ("Downvote"):("Login to Downvote")} withArrow arrowSize={5} position="right">
               <ActionIcon
                 color="yellow"
                 variant={downAction ? "filled" : "outline"}
-                onClick={() => onDown(comment)} className={classes.voteButton}
+                onClick={() => onDown(comment)}
+                className={classes.voteButton}
               >
-                <AiOutlineDown/>
-              </ActionIcon>
+                <AiOutlineDown />
+              </ActionIcon></Tooltip>
               <Text className={classes.voteValue}>{downvotes}</Text>
             </div>
           </Card.Section>
+          
           <div className={classes.containerRight}>
-            <Group position="apart"  >
-              <Group >
-              <Menu withArrow
-                position="bottom"
-                placement="center"
-                delay={300}
-                trigger="hover"
-                control={
-                  // <Group>
+            <Group position="apart">
+              <Group>
+                <Menu
+                  withArrow
+                  position="bottom"
+                  placement="center"
+                  delay={300}
+                  trigger="hover"
+                  control={
+                    // <Group>
                     <div>
                       {comment.writer.profile.avatar ? (
-                        <Avatar size={40} radius={100} color="indigo"  style={{padding: 0}}>
+                        <Avatar
+                          size={40}
+                          radius={100}
+                          color="indigo"
+                          style={{ padding: 0 }}
+                        >
                           {" "}
                           <Image
                             height={40}
@@ -509,11 +538,11 @@ const profileCard = (
                         <Avatar radius="xl" color="indigo" />
                       )}
                     </div>
-                   
-                  // </Group>
-                }
-              >
-                {/* <div>
+
+                    // </Group>
+                  }
+                >
+                  {/* <div>
                   {comment.writer.profile.avatar ? (
                     <Avatar size={120} radius={100} mx="auto" color="indigo">
                       {" "}
@@ -551,29 +580,35 @@ const profileCard = (
                     View Profile
                   </Button>
                 </Link> */}
-                {profileCard}
-              </Menu>
+                  {profileCard}
+                </Menu>
 
-              <div className={classes.user}>
-                      <Link to={`/profile/${comment.writer._id}`}>
-                        {comment.writer.name}
-                      </Link>
+                <div className={classes.user}>
+                  <Link to={`/profile/${comment.writer._id}`}>
+                    {comment.writer.name}
+                  </Link>
 
-                      <Menu size="xs" withArrow
-                position="right"
-                placement="center"
-                delay={300}
-                trigger="hover"
-                control={
+                  <Menu
+                    size="xs"
+                    withArrow
+                    position="right"
+                    placement="center"
+                    delay={300}
+                    trigger="hover"
+                    control={
                       <Text size="xs" color="dimmed">
                         {moment(comment.createdAt).format("LL")}
-                      </Text>}>
-                      <Text size="xs" color="dimmed">
-                        {moment(comment.createdAt).format('MMMM DD, YYYY [at] h:mm a')}
                       </Text>
-                      </Menu>
-                    </div>
-</Group>
+                    }
+                  >
+                    <Text size="xs" color="dimmed">
+                      {moment(comment.createdAt).format(
+                        "MMMM DD, YYYY [at] h:mm a"
+                      )}
+                    </Text>
+                  </Menu>
+                </div>
+              </Group>
               {/* <Group>
                 <div>
                 {comment.writer.profile.avatar ? (
@@ -604,7 +639,7 @@ const profileCard = (
               <div>
                 {user._id == comment.writer._id ? (
                   <Group className={classes.commentButton} spacing="xs">
-                    <ActionIcon onClick={handleEdit} variant="transparent" >
+                    <ActionIcon onClick={handleEdit} variant="transparent">
                       <AiFillEdit size={16} color="white" />
                     </ActionIcon>
 
@@ -619,7 +654,7 @@ const profileCard = (
               </div>
             </Group>
 
-            <Group mt={20}  >
+            <Group mt={20}>
               <Text weight={700} size="lg" className={classes.content}>
                 {comment.title}
               </Text>
@@ -695,7 +730,7 @@ const profileCard = (
                 </form>
               </Modal>
             ) : (
-              <Text  size="sm" className={classes.commentBody}>
+              <Text size="sm" className={classes.commentBody}>
                 {comment.content}
               </Text>
             )}

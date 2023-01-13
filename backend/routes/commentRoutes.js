@@ -88,7 +88,7 @@ router.post('/getComment', (req, res)=>{
 
     //edit comment
     router.put('/editComment/:id', (req, res)=>{
-        console.log(req.body)
+        console.log("EDIT COMMENT",req.body)
         console.log(req.params.id)
         Comment.findByIdAndUpdate(req.params.id, req.body, { new: true,}).populate('writer').exec((err, result)=>{
             if(err) return res.json({success: false, err})

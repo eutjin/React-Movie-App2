@@ -83,7 +83,9 @@ const Login=()=>{
           localStorage.setItem('user', JSON.stringify(response.data))
             setUser(response.data)
             return response.data
-        }).catch(function(error){ console.log(error.response.data.message)})
+        }).catch(function(error){ 
+          alert("Please check login credentials. Ensure that email and password is correct.")
+          console.log(error.response.data.message)})
     
         
         
