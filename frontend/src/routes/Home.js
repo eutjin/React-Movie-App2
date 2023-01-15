@@ -56,7 +56,9 @@ function Home() {
     prevPage,
   } = useGlobalContext();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     let nb = Math.ceil(results / 20);

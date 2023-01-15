@@ -162,6 +162,7 @@ const List = () => {
   useEffect(() => {
     getAllList();
     getCustomList();
+    window.scrollTo(0, 0);
   }, []);
 
   const responsive = {

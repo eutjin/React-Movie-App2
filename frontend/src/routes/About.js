@@ -70,6 +70,7 @@ const About = () => {
   };
 
   useEffect(()=>{
+    window.scrollTo(0, 0);
     getProfile();
     if(!user._id){
       console.log("yes user")
@@ -428,7 +429,7 @@ const About = () => {
                           >
                             <Group>
                               <Avatar size={30} radius={100} color="indigo">
-                                {item.userProfile.avatar ?<Image height={30} src={item.userProfile.avatar} /> : null}
+                                {item.profile.avatar ?<Image height={30} src={item.profile.avatar} /> : null}
                               </Avatar>
 
                               <Text>{item.profile.name}</Text>
